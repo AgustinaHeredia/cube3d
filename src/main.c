@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 15:10:57 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:14:44 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ int	main(int argc, char **argv)
 	game = (t_game *)malloc(sizeof(t_game) * 1);
 	if (!game)
 		return (ft_error("Error. Failed to malloc.\n"));
-	printf("llega aqui\n");
 	init_game(game);
-	// read_map(fd, game);
+	read_file(fd, game);
+	int i = 0;
+	while (i < 10)
+		printf("%s\n", game->map->map_game[i++]);
 	// check_map(game);
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (ft_error("Error. The release could not be started MLX\n"));
-	init_window(game);
+	// game->mlx = mlx_init();
+	// if (!game->mlx)
+	// 	return (ft_error("Error. The release could not be started MLX\n"));
+	// init_window(game);
+	// cleaning_all(game);
 	return (0);
 }

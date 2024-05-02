@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 15:15:41 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:28 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	paint_backgroud(t_game *game)
 
 void	init_window(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, 1500, 1000, "Cub3D");
+	game->win = mlx_new_window(game->mlx, 1920, 1080, "Cub3D");
 	// upload_img(game);
 	// paint_backgroud(game);
 	// setting_map_f(game);

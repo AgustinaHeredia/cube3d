@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 14:59:25 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:14:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,49 @@ void	init_game(t_game *game)
 	game->win = NULL;
 }
 
-// void	read_map(int fd, t_game *game)
-// {
-// 	char	*line;
-// 	char	*temp;
+void	create_map(t_map *map)
+{
+	int		i;
+	char	*temp;
 
-// 	line = get_next_line(fd);
-// 	game->height = 0;
-// 	game->width = ft_strlen(line) - 1;
-// 	game->strbigline = ft_strdup("");
-// 	while (line != NULL)
-// 	{
-// 		game->height++;
-// 		temp = game->strbigline;
-// 		game->strbigline = ft_strjoin(game->strbigline, line);
-// 		free(temp);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	close(fd);
-// 	game->map = ft_split(game->strbigline, '\n');
-// }
+	i = 0;
+	temp = ft_strdup("");
+	while (map->file[i])
+	{
+		if (ft_strncmp(map->file[i], "NO", 2)
+			&& ft_strncmp(map->file[i], "SO", 2)
+			&& ft_strncmp(map->file[i], "WE", 2)
+			&& ft_strncmp(map->file[i], "EA", 2)
+			&& ft_strncmp(map->file[i], "F", 1)
+			&& ft_strncmp(map->file[i], "C", 1))
+		{
+			temp = ft_strjoin(temp, "\n");
+			temp = ft_strjoin(temp, map->file[i]);
+		}
+		i++;
+	}
+	map->map_game = ft_split(temp, '\n');
+	free(temp);
+}
+
+void	read_file(int fd, t_game *game)
+{
+	char	*line;
+	char	*temp;
+	char	*strbigline;
+
+	line = get_next_line(fd);
+	strbigline = ft_strdup("");
+	while (line != NULL)
+	{
+		temp = strbigline;
+		strbigline = ft_strjoin(strbigline, line);
+		free(temp);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	game->map->file = ft_split(strbigline, '\n');
+	free(strbigline);
+	create_map(game->map);
+}

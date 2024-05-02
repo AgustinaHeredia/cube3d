@@ -6,13 +6,19 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/02 11:56:32 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/02 14:45:27 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
-SRC = src/main.c
+SRC = src/main.c \
+		src/check_arg.c \
+		src/error.c \
+		src/init_game.c \
+		src/init_win.c \
+		src/key_press.c \
+		src/exit.c \
 
 CC = gcc
 MLX_PATH = mlx/

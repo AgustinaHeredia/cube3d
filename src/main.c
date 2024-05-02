@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 17:14:44 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:56:41 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int	main(int argc, char **argv)
 	while (i < 10)
 		printf("%s\n", game->map->map_game[i++]);
 	// check_map(game);
-	// game->mlx = mlx_init();
-	// if (!game->mlx)
-	// 	return (ft_error("Error. The release could not be started MLX\n"));
-	// init_window(game);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (ft_error("Error. The release could not be started MLX\n"));
+	init_window(game);
+	mlx_destroy_window(game->mlx, game->win);
+    free(game->mlx);
 	// cleaning_all(game);
 	return (0);
 }

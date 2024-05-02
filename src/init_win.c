@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 16:03:28 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:58:53 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,27 @@ void	paint_backgroud(t_game *game)
 		row++;
 	}
 }
+int	render(t_game *game)
+{
+    /* if window has been destroyed, we don't want to put the pixel ! */
+    if (game->win != NULL)
+        mlx_pixel_put(game->mlx, game->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, RED_PIXEL);
+    return (0);
+}
 
 void	init_window(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, 1920, 1080, "Cub3D");
+	// game->win = mlx_new_window(game->mlx, 1920, 1080, "Cub3D");
 	// upload_img(game);
 	// paint_backgroud(game);
 	// setting_map_f(game);
+	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "raytracing");
+	if (game->win == NULL)
+    {
+        free(game->win);
+        return ;
+    }
+	mlx_loop_hook(game->mlx, &render, game);
 	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &press_key, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop(game->mlx);

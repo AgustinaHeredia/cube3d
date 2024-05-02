@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 16:45:16 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:48:50 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <unistd.h>
 # include <limits.h>
 
+#define WINDOW_WIDTH 600 //test
+#define WINDOW_HEIGHT 300 //test
+
+#define RED_PIXEL 0xFF0000 //test
+
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
@@ -30,6 +35,7 @@
 # define KEY_S		1
 # define KEY_D		2
 # define IMG_PX		64
+
 
 typedef struct s_player
 {

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 14:47:26 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:52:53 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int	exit_game(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	free_map(game->map->map_game);
+	free_map(game->map->file);
+	free(game->map);
+	free(game->player);
 	free(game);
-	ft_printf("Ooohhh... you're out of the game");
+	ft_printf("Ooohhh... you're out of the game\n");
 	exit(0);
 }
 
@@ -32,4 +35,12 @@ void	free_map(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void	error_free_exit(t_game *game, char *str)
+{
+	// free_map(game->map);
+	free(game);
+	perror(str);
+	exit (EXIT_FAILURE);
 }

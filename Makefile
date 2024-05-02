@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/02 16:35:39 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/02 17:40:04 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC = src/main.c \
 		src/init_win.c \
 		src/key_press.c \
 		src/exit.c \
+		src/check_map.c \
 
 CC = gcc
 MLX_PATH = mlx/

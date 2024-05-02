@@ -1,0 +1,5 @@
+.vscode
+.DS_Store
+*.o
+*.d
+mlx/libmlx.a

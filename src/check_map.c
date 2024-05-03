@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/03 12:49:08 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/03 13:17:18 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,19 @@ int	all_char_valid(t_map *map)
 		}
 		row++;
 	}
+	map->height = row;
+	map->width = col;
 	return (0);
 }
 
 void	check_map(t_game *game)
 {
 	if (all_char_valid(game->map) != 0)
-		error_free_exit(game, "Error. El mapa tiene char no validos\n");
+		error_free_exit(game, "Error. Map has invalid char\n");
+	if (check_map_resolt(game->map) != 0)
+		error_free_exit(game, "Error. El mapa no tiene solución.\n");
 	// if (perimeter_check(game) != 0)
 	// 	error_free_exit(game, "Error. El perimetro no es correcto\n");
-	// if (check_map_resolt(game) != 0)
-	// 	error_free_exit(game, "Error. El mapa no tiene solución.\n");
 	else
 		ft_printf("El mapa es correcto, seguimos\n");
 }

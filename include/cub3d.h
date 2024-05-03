@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 17:52:23 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:12:44 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	init_game(t_game *game);
 void	read_file(int fd, t_game *game);
 void	check_map(t_game *game);
 int		all_char_valid(t_map *map);
+int		check_map_resolt(t_map *map);
 
 //game
 int		exit_game(t_game *game);

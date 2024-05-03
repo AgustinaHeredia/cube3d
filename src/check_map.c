@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 17:52:27 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:49:08 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	all_char_valid(t_map *map)
 		col = 0;
 		while (map->map_game[row][col])
 		{
-			if (map->map_game[row][col] != 'N' && map->map_game[row][col] != 'S'
+			if (map->map_game[row][col] != ' '
+				&& map->map_game[row][col] != '\t'
+				&& map->map_game[row][col] != 'N'
+				&& map->map_game[row][col] != 'S'
 				&& map->map_game[row][col] != 'W'
 				&& map->map_game[row][col] != 'E'
 				&& map->map_game[row][col] != '0'

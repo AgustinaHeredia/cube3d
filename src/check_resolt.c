@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/03 14:24:58 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:44:47 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,25 @@ static void	player_position(t_map *map)
 	}
 }
 
+static int	check_flood(char **temp, int i, int j)
+{
+	int	len;
+	int	row;
+
+	row = 0;
+	while (temp[row])
+		row++;
+	len = ft_strlen(temp[i]);
+	printf("ROW = %d, i = %d, j = %d\n", row, i, j);
+	if (temp[0][j] == 'F' || temp[row - 1][j] == 'F')
+		return (-1);
+	if (temp[i][0] == 'F'
+		|| temp[i][len - 1] == 'F')
+		return (-1);
+	else
+		return (0);
+}
+
 int	check_map_resolt(t_map *map)
 {
 	char	**temp;
@@ -87,8 +106,11 @@ int	check_map_resolt(t_map *map)
 		j = 0;
 		while (temp[i][j])
 		{
-			printf("%c", temp[i][j]);
-			//logica para comprobar que se puede resolver
+			if (check_flood(temp, i, j) == -1)
+			{
+				free(temp);
+				return (-1);
+			}
 			j++;
 		}
 		i++;

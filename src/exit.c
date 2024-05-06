@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 17:52:53 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:36:12 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	exit_game(t_game *game)
 	exit(0);
 }
 
-void	free_map(char **tab)
+int	free_map(char **tab)
 {
 	int	i;
 
@@ -35,6 +35,7 @@ void	free_map(char **tab)
 		i++;
 	}
 	free(tab);
+	return (-1);
 }
 
 void	error_free_exit(t_game *game, char *str)

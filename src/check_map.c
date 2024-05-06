@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/03 13:17:18 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:55:09 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	all_char_valid(t_map *map)
 	}
 	map->height = row;
 	map->width = col;
+	printf("Height es %d y width %d\n", map->height, map->width);
 	return (0);
 }
 

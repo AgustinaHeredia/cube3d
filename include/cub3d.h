@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/03 14:12:44 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:36:26 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	error_free_exit(t_game *game, char *str);
 
 //exit
 int		exit_game(t_game *game);
-void	free_map(char **tab);
+int		free_map(char **tab);
 
 #endif

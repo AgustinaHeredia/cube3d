@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/03 13:07:36 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/06 21:07:13 by agusheredia      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = src/main.c \
 		src/key_press.c \
 		src/exit.c \
 		src/check_map.c \
-		check_resolt.c \
+		src/check_resolt.c \
+		src/utils_debug.c \
 
 CC = gcc
 MLX_PATH = mlx/

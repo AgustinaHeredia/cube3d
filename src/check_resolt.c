@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_resolt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/06 15:44:47 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/06 21:05:47 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	flood_fill(t_map *map, char **temp, int x, int y)
 {
-	if (x < 0 || x >= map->height || y < 0 || y >= map->width
+	int	len;
+
+	len = ft_strlen(map->map_game[x]);
+	if (x < 0 || x >= map->height || y < 0 || y >= len
 		|| temp[x][y] == '1' || temp[x][y] == 'F' || temp[x][y] == ' ')
 		return ;
 	temp[x][y] = 'F';
@@ -72,46 +75,52 @@ static void	player_position(t_map *map)
 	}
 }
 
-static int	check_flood(char **temp, int i, int j)
+static int	check_flood(char **map, char *line, int row)
 {
 	int	len;
-	int	row;
+	int	x;
+	int	start;
 
-	row = 0;
-	while (temp[row])
-		row++;
-	len = ft_strlen(temp[i]);
-	printf("ROW = %d, i = %d, j = %d\n", row, i, j);
-	if (temp[0][j] == 'F' || temp[row - 1][j] == 'F')
+	len = ft_strlen(line) - 1;
+	x = 0;
+	start = 0;
+	while (line[start] == ' ')
+		start++;
+	if (line[start] == 'F' || line[len] == 'F')
 		return (-1);
-	if (temp[i][0] == 'F'
-		|| temp[i][len - 1] == 'F')
-		return (-1);
-	else
-		return (0);
+	while (line[x])
+	{
+		if (line[x] == 'F')
+		{
+			if (row == 0 || !map[row + 1])
+				return (-1);
+			if (map[row - 1][x] == ' ')
+				return (-1);
+			if (map[row + 1][x] == ' ')
+				return (-1);
+		}
+		x++;
+	}
+	return (0);
 }
 
 int	check_map_resolt(t_map *map)
 {
 	char	**temp;
 	int		i;
-	int		j;
 
 	player_position(map);
 	temp = create_copy_map(map->map_game, map->height);
 	flood_fill(map, temp, map->player_x, map->player_y);
+	printf("AFTER FLOOD\n");
+	print_array(temp);
 	i = 0;
 	while (temp[i])
 	{
-		j = 0;
-		while (temp[i][j])
+		if (check_flood(temp, temp[i], i) == -1)
 		{
-			if (check_flood(temp, i, j) == -1)
-			{
-				free(temp);
-				return (-1);
-			}
-			j++;
+			free(temp);
+			return (-1);
 		}
 		i++;
 	}

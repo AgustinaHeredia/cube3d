@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 10:32:33 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:29:41 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ void	check_map(t_game *game)
 	map_mesures(game->map);
 	if (all_char_valid(game->map) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
-	if (check_map_resolt(game->map) != 0)
+	if (check_map_resolt(game->map, game->player) != 0)
 		error_free_exit(game, "Error. El mapa no tiene solución.\n");
-	// if (perimeter_check(game) != 0)
-	// 	error_free_exit(game, "Error. El perimetro no es correcto\n");
+	// if (path_check(game) != 0)
+	// 	error_free_exit(game, "Error. El path no es correcto\n");
+	// if (color_check(game) != 0)
+	// 	error_free_exit(game, "Error. El color no es correcto\n");
 	else
 		ft_printf("El mapa es correcto, seguimos\n");
 }

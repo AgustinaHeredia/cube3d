@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_resolt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/06 21:05:47 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/08 11:25:59 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	**create_copy_map(char **map, int height)
 	return (temp);
 }
 
-static void	player_position(t_map *map)
+static void	player_position(t_map *map, t_player *player)
 {
 	int	row;
 	int	col;
@@ -66,8 +66,9 @@ static void	player_position(t_map *map)
 				|| map->map_game[row][col] == 'W'
 				|| map->map_game[row][col] == 'E')
 			{
-				map->player_x = row;
-				map->player_y = col;
+				player->player_x = row;
+				player->player_y = col;
+				player->pos_init = map->map_game[row][col];
 			}
 			col++;
 		}
@@ -104,14 +105,14 @@ static int	check_flood(char **map, char *line, int row)
 	return (0);
 }
 
-int	check_map_resolt(t_map *map)
+int	check_map_resolt(t_map *map, t_player *player)
 {
 	char	**temp;
 	int		i;
 
-	player_position(map);
+	player_position(map, player);
 	temp = create_copy_map(map->map_game, map->height);
-	flood_fill(map, temp, map->player_x, map->player_y);
+	flood_fill(map, temp, player->player_x, player->player_y);
 	printf("AFTER FLOOD\n");
 	print_array(temp);
 	i = 0;

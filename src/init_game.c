@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 17:14:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:28:22 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	malloc_control(t_game *game)
 void	init_map(t_game *game)
 {
 	game->map->map_game = NULL;
-	game->map->player_x = 0;
-	game->map->player_y = 0;
-	game->map->height = 3;
-	game->map->width = 3;
+	game->map->height = 0;
+	game->map->width = 0;
+	game->player->player_x = 0;
+	game->player->player_y = 0;
 }
 
 void	init_game(t_game *game)

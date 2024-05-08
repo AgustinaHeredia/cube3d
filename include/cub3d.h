@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/06 21:06:30 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/08 11:29:08 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
+	char	pos_init;
 }	t_player;
 
 typedef struct s_map
 {
 	char	**file;
 	char	**map_game;
-	int		player_x;
-	int		player_y;
 	int		width;
 	int		height;
 }	t_map;
@@ -64,7 +63,7 @@ void	init_game(t_game *game);
 void	read_file(int fd, t_game *game);
 void	check_map(t_game *game);
 int		all_char_valid(t_map *map);
-int		check_map_resolt(t_map *map);
+int		check_map_resolt(t_map *map, t_player *player);
 
 //game
 int		exit_game(t_game *game);

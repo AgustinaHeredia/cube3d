@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/06 13:55:09 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/08 10:32:33 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,30 @@ int	all_char_valid(t_map *map)
 		}
 		row++;
 	}
-	map->height = row;
-	map->width = col;
-	printf("Height es %d y width %d\n", map->height, map->width);
 	return (0);
+}
+
+static void	map_mesures(t_map *map)
+{
+	int	line;
+	int	height;
+
+	line = 0;
+	height = 0;
+	while (map->map_game[line])
+	{
+		if ((int)ft_strlen(map->map_game[line]) > map->width)
+			map->width = (int)ft_strlen(map->map_game[line]);
+		line++;
+		height++;
+	}
+	map->height = height;
+	printf("Height es %d y width %d\n", map->height, map->width);
 }
 
 void	check_map(t_game *game)
 {
+	map_mesures(game->map);
 	if (all_char_valid(game->map) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (check_map_resolt(game->map) != 0)

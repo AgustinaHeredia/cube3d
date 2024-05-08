@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 11:25:59 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:46:09 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ static int	check_flood(char **map, char *line, int row)
 	{
 		if (line[x] == 'F')
 		{
+			printf("LINE: %s en linea: %d, posicion %d\n", line, row, x);
 			if (row == 0 || !map[row + 1])
+				return (-1);
+			if (!map[row - 1][x])
 				return (-1);
 			if (map[row - 1][x] == ' ')
 				return (-1);

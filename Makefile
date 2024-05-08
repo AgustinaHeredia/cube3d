@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
+#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/06 21:07:13 by agusheredia      ###   ########.fr        #
+#    Updated: 2024/05/08 17:50:16 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ clean:
 	@echo "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean: clean
-	@make -C $(MLX_PATH) clean
+	@make -C $(MLX_PATH) fclean
 	@make -C $(LIBFT_PATH) fclean
 	@rm -f $(NAME)
 	@echo "$(RED)all deleted!$(DEFAULT)"

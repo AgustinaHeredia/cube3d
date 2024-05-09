@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 11:29:08 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:46:39 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ typedef struct s_map
 	char	**map_game;
 	int		width;
 	int		height;
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
 }	t_map;
 
 typedef struct s_game
@@ -80,6 +84,11 @@ void	error_free_exit(t_game *game, char *str);
 //exit
 int		exit_game(t_game *game);
 int		free_map(char **tab);
+
+//utils
+char	*ft_spalloc(size_t count);
+void	map_mesures(t_map *map);
+void	create_map(t_map *map);
 
 //utils debug
 void	print_array(char **array);

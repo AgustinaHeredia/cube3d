@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 11:29:41 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:47:23 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	all_char_valid(t_map *map)
 	return (0);
 }
 
-static void	map_mesures(t_map *map)
+void	map_mesures(t_map *map)
 {
 	int	line;
 	int	height;
@@ -54,12 +54,10 @@ static void	map_mesures(t_map *map)
 		height++;
 	}
 	map->height = height;
-	printf("Height es %d y width %d\n", map->height, map->width);
 }
 
 void	check_map(t_game *game)
 {
-	map_mesures(game->map);
 	if (all_char_valid(game->map) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (check_map_resolt(game->map, game->player) != 0)

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 11:28:22 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:45:00 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,25 @@ void	init_game(t_game *game)
 	game->win = NULL;
 }
 
-void	create_map(t_map *map)
+static void	space_map(t_map *map)
 {
 	int		i;
 	char	*temp;
+	int		len;
 
+	map_mesures(map);
 	i = 0;
-	temp = ft_strdup("");
-	while (map->file[i])
+	while (map->map_game[i])
 	{
-		if (ft_strncmp(map->file[i], "NO", 2)
-			&& ft_strncmp(map->file[i], "SO", 2)
-			&& ft_strncmp(map->file[i], "WE", 2)
-			&& ft_strncmp(map->file[i], "EA", 2)
-			&& ft_strncmp(map->file[i], "F", 1)
-			&& ft_strncmp(map->file[i], "C", 1))
+		len = ft_strlen(map->map_game[i]);
+		if (len < map->width)
 		{
-			temp = ft_strjoin(temp, "\n");
-			temp = ft_strjoin(temp, map->file[i]);
+			temp = ft_spalloc(map->width - len);
+			map->map_game[i] = ft_strjoin(map->map_game[i], temp);
+			free(temp);
 		}
 		i++;
 	}
-	map->map_game = ft_split(temp, '\n');
-	free(temp);
 }
 
 void	read_file(int fd, t_game *game)
@@ -92,4 +88,5 @@ void	read_file(int fd, t_game *game)
 	game->map->file = ft_split(strbigline, '\n');
 	free(strbigline);
 	create_map(game->map);
+	space_map(game->map);
 }

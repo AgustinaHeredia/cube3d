@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 12:46:39 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:59:58 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_map
 	char	*path_so;
 	char	*path_we;
 	char	*path_ea;
+	char	*f_color;
+	char	*c_color;
 }	t_map;
 
 typedef struct s_game
@@ -56,7 +58,7 @@ typedef struct s_game
 	t_player	*player;
 	void		*mlx;
 	void		*win;
-	void		*img_floor;
+	void		*img;
 }	t_game;
 
 //check arg
@@ -68,7 +70,8 @@ void	read_file(int fd, t_game *game);
 void	check_map(t_game *game);
 int		all_char_valid(t_map *map);
 int		check_map_resolt(t_map *map, t_player *player);
-
+int		check_path(t_game *game);
+int		check_color(t_game *game);
 //game
 int		exit_game(t_game *game);
 int		press_key(int key_code, t_game *game);
@@ -89,6 +92,7 @@ int		free_map(char **tab);
 char	*ft_spalloc(size_t count);
 void	map_mesures(t_map *map);
 void	create_map(t_map *map);
+size_t	ft_wordcount(char *s, char sep);
 
 //utils debug
 void	print_array(char **array);

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 12:45:00 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:06:25 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	init_map(t_game *game)
 	game->map->width = 0;
 	game->player->player_x = 0;
 	game->player->player_y = 0;
+	game->map->path_no = NULL;
+	game->map->path_so = NULL;
+	game->map->path_we = NULL;
+	game->map->path_ea = NULL;
+	game->map->f_color = NULL;
+	game->map->c_color = NULL;
 }
 
 void	init_game(t_game *game)

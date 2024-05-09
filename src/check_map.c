@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 12:47:23 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 15:24:17 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	check_map(t_game *game)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (check_map_resolt(game->map, game->player) != 0)
 		error_free_exit(game, "Error. El mapa no tiene solución.\n");
-	// if (path_check(game) != 0)
-	// 	error_free_exit(game, "Error. El path no es correcto\n");
-	// if (color_check(game) != 0)
-	// 	error_free_exit(game, "Error. El color no es correcto\n");
+	if (check_path(game) != 0)
+		error_free_exit(game, "Error. El path no es correcto\n");
+	if (check_color(game) != 0)
+		error_free_exit(game, "Error. El color no es correcto\n");
 	else
 		ft_printf("El mapa es correcto, seguimos\n");
 }

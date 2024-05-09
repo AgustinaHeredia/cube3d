@@ -6,26 +6,26 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 16:03:28 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:49:50 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	upload_img(t_game *game)
-{
-	int	img_width;
-	int	img_height;
+// void	upload_img(t_game *game)
+// {
+// 	int	img_width;
+// 	int	img_height;
 
-	game->img_floor = mlx_xpm_file_to_image(game->mlx,
-			"./textures/pasto.xpm", &img_width, &img_height);
-	// game->img_wall = mlx_xpm_file_to_image(game->mlx,
-	// 		"./textures/arbol1.xpm", &img_width, &img_height);
-	// game->img_player = mlx_xpm_file_to_image(game->mlx,
-	// 		"./textures/caperucitaespalda.xpm", &img_width, &img_height);
-	// game->img_exit = mlx_xpm_file_to_image(game->mlx,
-	// 		"./textures/house1.xpm", &img_width, &img_height);
-}
+// 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
+// 			"./textures/pasto.xpm", &img_width, &img_height);
+// 	// game->img_wall = mlx_xpm_file_to_image(game->mlx,
+// 	// 		"./textures/arbol1.xpm", &img_width, &img_height);
+// 	// game->img_player = mlx_xpm_file_to_image(game->mlx,
+// 	// 		"./textures/caperucitaespalda.xpm", &img_width, &img_height);
+// 	// game->img_exit = mlx_xpm_file_to_image(game->mlx,
+// 	// 		"./textures/house1.xpm", &img_width, &img_height);
+// }
 
 // void	setting_map_f(t_game *game)
 // {
@@ -65,7 +65,7 @@ void	paint_backgroud(t_game *game)
 		col = 0;
 		while (col < 2)
 		{
-			mlx_put_image_to_window(game->mlx, game->win, game->img_floor,
+			mlx_put_image_to_window(game->mlx, game->win, game->img,
 				col * IMG_PX, row * IMG_PX);
 			col++;
 		}

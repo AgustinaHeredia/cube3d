@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/09 11:55:31 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/09 15:18:07 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC = src/main.c \
 		src/check_resolt.c \
 		src/utils_debug.c \
 		src/utils_map.c \
+		src/check_path.c \
+		src/check_color.c \
 
 CC = gcc
 MLX_PATH = mlx/

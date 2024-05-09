@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:55:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 14:50:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/09 15:33:51 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,21 @@ static void	path_mesure(t_game *game)
 	}
 }
 
-// static int	path_img(t_game *game, t_map *map)
-// {
-// 	int	width;
-// 	int	height;
+static int	path_img(t_game *game, t_map *map)
+{
+	int	width;
+	int	height;
 
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_no, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_so, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_we, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_ea, &width, &height))
-// 		return (-1);
-// 	return (0);
-// }
+	if (!mlx_xpm_file_to_image(game->mlx, map->path_no, &width, &height))
+		return (-1);
+	if (!mlx_xpm_file_to_image(game->mlx, map->path_so, &width, &height))
+		return (-1);
+	if (!mlx_xpm_file_to_image(game->mlx, map->path_we, &width, &height))
+		return (-1);
+	if (!mlx_xpm_file_to_image(game->mlx, map->path_ea, &width, &height))
+		return (-1);
+	return (0);
+}
 
 int	check_path(t_game *game)
 {

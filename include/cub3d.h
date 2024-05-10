@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 14:04:26 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:44:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@
 # define MAP_HEIGHT 10
 # define S_W 1900 // screen width
 # define S_H 1000 // screen height
+
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 typedef struct s_player
 {
@@ -99,6 +108,8 @@ char	*ft_spalloc(size_t count);
 void	map_mesures(t_map *map);
 void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_square(t_data *data, int x, int y, int color);
 
 //utils debug
 void	print_array(char **array);

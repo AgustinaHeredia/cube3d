@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 14:59:58 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:02:35 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
-	char	pos_init;
+	char	player_view;
 }	t_player;
 
 typedef struct s_map

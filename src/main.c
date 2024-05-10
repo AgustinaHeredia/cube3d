@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/08 11:26:47 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:36:40 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	init_game(game);
 	read_file(fd, game);
 	check_map(game);
-	printf("El char de init player es %c", game->player->pos_init);
+	printf("El char de init player es %c", game->player->player_view);
 	// game->mlx = mlx_init();
 	// if (!game->mlx)
 	// 	return (ft_error("Error. The release could not be started MLX\n"));

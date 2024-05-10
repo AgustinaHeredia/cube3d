@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 10:02:35 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:04:26 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # define KEY_S		1
 # define KEY_D		2
 # define IMG_PX		64
+
+# define MAP_WIDTH 10
+# define MAP_HEIGHT 10
+# define S_W 1900 // screen width
+# define S_H 1000 // screen height
 
 typedef struct s_player
 {
@@ -78,6 +83,7 @@ int		press_key(int key_code, t_game *game);
 void	init_window(t_game *game);
 void	upload_img(t_game *game);
 void	paint_backgroud(t_game *game);
+void	draw_map_2d(t_game *game, t_map *map);
 // void	setting_map_f(t_game *game);
 
 //error files

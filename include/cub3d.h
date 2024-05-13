@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/13 14:28:32 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:12:32 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <unistd.h>
 # include <limits.h>
 
+# define TILE_SIZE_R 16
+# define FOV 60
+# define ROTATION_SPEED 0.045
+# define PLAYER_SPEED 2
+
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
@@ -31,10 +36,24 @@
 # define KEY_D		2
 # define IMG_PX		64
 
-# define MAP_WIDTH 10
-# define MAP_HEIGHT 10
-# define S_W 1900 // screen width
-# define S_H 1000 // screen height
+# define MAP_WIDTH 24
+# define MAP_HEIGHT 24
+# define S_WIDTH 1280
+# define S_HEIGHT 720
+# define TEX_WIDTH 32
+# define TEX_HEIGHT 32
+
+typedef struct s_img
+{
+	void	*img;
+	int		*data;
+	int		size_l;
+	int		bpp;
+	int		endian;
+
+	int		img_width;
+	int		img_height;
+}	t_img;
 
 typedef struct s_data
 {
@@ -74,7 +93,18 @@ typedef struct s_game
 	t_player	*player;
 	void		*mlx;
 	void		*win;
-	void		*img;
+	void		*imagen;
+	double		playerPositionX;
+	double		playerPositionY;
+	double		directionVectorX;
+	double		directionVectorY;
+	double		planeX;
+	double		planeY;
+	double		moveSpeed;
+	double		rotSpeed;
+	int			**texture;
+	t_img		img;
+	int			buf[SCREENHEIGHT][SCREENWIDTH];
 }	t_game;
 
 //check arg

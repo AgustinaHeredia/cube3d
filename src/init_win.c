@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 12:34:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:12:35 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	paint_backgroud(t_game *game)
 		col = 0;
 		while (col < 2)
 		{
-			mlx_put_image_to_window(game->mlx, game->win, game->img,
+			mlx_put_image_to_window(game->mlx, game->win, game->imagen,
 				col * IMG_PX, row * IMG_PX);
 			col++;
 		}
@@ -75,7 +75,7 @@ void	paint_backgroud(t_game *game)
 
 void	init_window(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, 1920, 1080, "Cub3D");
+	game->win = mlx_new_window(game->mlx, S_WIDTH, S_HEIGHT, "Cub3D");
 	draw_map_2d(game, game->map);
 	// upload_img(game);
 	// paint_backgroud(game);

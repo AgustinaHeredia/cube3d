@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 10:23:30 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/02 11:55:32 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/13 15:00:12 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS = ft_atoi.c \
 	   pf_putnbr.c \
 	   pf_strlen.c \
 	   pf_putstr.c \
+	   ft_atoibase.c \
 
 OBJS = $(SRCS:.c=.o)
 

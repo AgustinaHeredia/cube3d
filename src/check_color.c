@@ -6,11 +6,28 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 15:27:52 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:29:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static int	color_to_hex(int red, int green, int blue)
+{
+	int	hex_color;
+
+	hex_color = (red << 16) | (green << 8) | blue;
+	return (hex_color);
+}
+
+
+static void	mesure_color(t_map *map, char **floor, char **ceiling)
+{
+	map->floor = color_to_hex(ft_atoi(floor[0]),
+			ft_atoi(floor[1]), ft_atoi(floor[2]));
+	map->ceiling = color_to_hex(ft_atoi(ceiling[0]),
+			ft_atoi(ceiling[1]), ft_atoi(ceiling[2]));
+}
 
 int	check_color(t_game *game)
 {
@@ -32,5 +49,8 @@ int	check_color(t_game *game)
 		|| ft_atoi(ceiling[1]) < 0 || ft_atoi(ceiling[1]) > 255
 		|| ft_atoi(ceiling[2]) < 0 || ft_atoi(ceiling[2]) > 255)
 		return (-1);
+	mesure_color(game->map, floor, ceiling);
+	free_map(floor);
+	free_map(ceiling);
 	return (0);
 }

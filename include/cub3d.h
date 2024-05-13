@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 14:44:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:28:32 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_map
 	char	*path_ea;
 	char	*f_color;
 	char	*c_color;
+	int		floor;
+	int		ceiling;
 }	t_map;
 
 typedef struct s_game

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:13:35 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 14:53:50 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:23:31 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	draw_map_2d(t_game *game, t_map *map)
 		while (++x < map->width)
 		{
 			if (map->map_game[y][x] == '1')
-				draw_square(&img, 10 + x * 20, 10 + y * 20, 0xFF0000);
+				draw_square(&img, 10 + x * 20, 10 + y * 20, map->floor);
 			else if (map->map_game[y][x] == '0')
-				draw_square(&img, 10 + x * 20, 10 + y * 20, 0x00FF00);
-			else if (map->map_game[y][x] == 'N' || map->map_game[y][x] == 'S'
-				|| map->map_game[y][x] == 'W' || map->map_game[y][x] == 'E')
-				draw_square(&img, 10 + x * 20, 10 + y * 20, 0x0000FF);
+				draw_square(&img, 10 + x * 20, 10 + y * 20, map->ceiling);
+			// else if (map->map_game[y][x] == 'N' || map->map_game[y][x] == 'S'
+			// 	|| map->map_game[y][x] == 'W' || map->map_game[y][x] == 'E')
+			// 	draw_square(&img, 10 + x * 20, 10 + y * 20, 0x0000FF);
 			else if (map->map_game[y][x] == ' ')
 				draw_square(&img, 10 + x * 20, 10 + y * 20, 0xFFFFFF);
 		}

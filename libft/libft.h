@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:29:29 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/15 12:08:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:00:04 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ int		pf_putchar(char c);
 int		pf_putnbr(int nb);
 int		pf_strlen(const char *s);
 int		pf_putstr(char *s);
+int		ft_atoibase(char *str, int base);
 
 #endif

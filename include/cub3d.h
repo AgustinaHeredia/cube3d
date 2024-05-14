@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 11:34:42 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:42:41 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@
 # define KEY_A		0
 # define KEY_S		1
 # define KEY_D		2
-# define IMG_PX		64
+# define KEY_LEFT	262
+# define KEY_RIGHT	263
+
+# define KEY_RELEASE 	0
+# define KEY_PRESS		1
+# define KEY_REPEAT 	2
 
 # define MAP_WIDTH 24
 # define MAP_HEIGHT 24
@@ -147,8 +152,8 @@ void	print_array(char **array);
 int		raycast(t_game *game);
 
 //Keys
-void	move_rotate_right(t_game *game, t_map *map);
-void	move_rotate_left(t_game *game, t_map *map);
+void	rotate_right(t_game *game, t_map *map);
+void	rotate_left(t_game *game, t_map *map);
 void	move_forward(t_game *game, t_map *map);
 void	move_back(t_game *game, t_map *map);
 

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:32:23 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 11:31:43 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:29:13 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ int	press_key(int key_code, t_game *game)
 	if (key_code == KEY_S)
 		move_s(game, game->map);
 	if (key_code == KEY_D)
+		move_d(game, game->map);
+	if (key_code == KEY_LEFT)
+		move_s(game, game->map);
+	if (key_code == KEY_RIGHT)
 		move_d(game, game->map);
 	return (0);
 }

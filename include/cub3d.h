@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/13 23:12:32 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/14 11:34:42 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_game
 	double		rotSpeed;
 	int			**texture;
 	t_img		img;
-	int			buf[SCREENHEIGHT][SCREENWIDTH];
+	int			buf[S_HEIGHT][S_WIDTH];
 }	t_game;
 
 //check arg
@@ -122,10 +122,7 @@ int		check_color(t_game *game);
 int		exit_game(t_game *game);
 int		press_key(int key_code, t_game *game);
 void	init_window(t_game *game);
-void	upload_img(t_game *game);
-void	paint_backgroud(t_game *game);
 void	draw_map_2d(t_game *game, t_map *map);
-// void	setting_map_f(t_game *game);
 
 //error files
 int		ft_error(char *str);
@@ -145,5 +142,14 @@ void	draw_square(t_data *data, int x, int y, int color);
 
 //utils debug
 void	print_array(char **array);
+
+//raycast
+int		raycast(t_game *game);
+
+//Keys
+void	move_rotate_right(t_game *game, t_map *map);
+void	move_rotate_left(t_game *game, t_map *map);
+void	move_forward(t_game *game, t_map *map);
+void	move_back(t_game *game, t_map *map);
 
 #endif

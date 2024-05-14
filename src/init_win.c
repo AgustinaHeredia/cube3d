@@ -3,84 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/13 23:12:35 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/14 11:25:29 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void	upload_img(t_game *game)
-// {
-// 	int	img_width;
-// 	int	img_height;
-
-// 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
-// 			"./textures/pasto.xpm", &img_width, &img_height);
-// 	// game->img_wall = mlx_xpm_file_to_image(game->mlx,
-// 	// 		"./textures/arbol1.xpm", &img_width, &img_height);
-// 	// game->img_player = mlx_xpm_file_to_image(game->mlx,
-// 	// 		"./textures/caperucitaespalda.xpm", &img_width, &img_height);
-// 	// game->img_exit = mlx_xpm_file_to_image(game->mlx,
-// 	// 		"./textures/house1.xpm", &img_width, &img_height);
-// }
-
-// void	setting_map_f(t_game *game)
-// {
-
-	// int	row;
-	// int	col;
-
-	// row = 0;
-	// while (row < game->height)
-	// {
-	// 	col = 0;
-	// 	while (col < game->width)
-	// 	{
-	// 		if (game->map[row][col] == '1')
-	// 			mlx_put_image_to_window(game->mlx, game->win,
-	// 				game->img_wall, col * IMG_PX, row * IMG_PX);
-	// 		else if (game->map[row][col] == 'P')
-	// 			mlx_put_image_to_window(game->mlx, game->win,
-	// 				game->img_player_f, col * IMG_PX, row * IMG_PX);
-	// 		else if (game->map[row][col] == 'E')
-	// 			mlx_put_image_to_window(game->mlx, game->win,
-	// 				game->img_exit, col * IMG_PX, row * IMG_PX);
-	// 		col++;
-	// 	}
-	// 	row++;
-	// }
-// }
-
-void	paint_backgroud(t_game *game)
+void	init_player(t_game *game)
 {
-	int	row;
-	int	col;
+	game->playerPositionX = game->player->player_x;
+	game->playerPositionY = game->player->player_y;
+	game->planeX = 0;
+	game->planeY = 0.66;
+	game->moveSpeed = 0.05;
+	game->rotSpeed = 0.05;
 
-	row = 0;
-	while (row < 2)
+	if (!(game->texture = (int **)malloc(sizeof(int *) * (TEX_WIDTH * TEX_HEIGHT))))
+		return ; //return (-1);
+	int i = 0;
+	while (i < 8)
 	{
-		col = 0;
-		while (col < 2)
-		{
-			mlx_put_image_to_window(game->mlx, game->win, game->imagen,
-				col * IMG_PX, row * IMG_PX);
-			col++;
-		}
-		row++;
+		if (!(game->texture[i] = (int *)malloc(sizeof(int) * (TEX_WIDTH * TEX_HEIGHT))))
+			return ; //return (-1);
+		i++;
 	}
+	int	j;
+	j = 0;
+	i = 0;
+	while(i < 8)
+	{
+		// j = 0; // no OG
+		while(j < TEX_WIDTH * TEX_HEIGHT)
+		{
+			game->texture[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+}
+
+int	game_loop(void *ml)
+{
+	t_game	*game;
+
+	game = ml;
+	mlx_destroy_image(game->mlx, game->imagen);
+	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
+	// hook(mlx, 0, 0); // hook the player
+	raycast(game); // cast the rays
+	mlx_put_image_to_window(game->mlx, game->win, game->imagen, 0, 0);
+	return (0);
 }
 
 void	init_window(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, S_WIDTH, S_HEIGHT, "Cub3D");
-	draw_map_2d(game, game->map);
-	// upload_img(game);
-	// paint_backgroud(game);
-	// setting_map_f(game);
-	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &press_key, game);
-	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
+	init_player(game);
+	mlx_loop_hook(game->mlx, &game_loop, &game);
+	mlx_key_hook(game->mlx, &press_key, &game);
 	mlx_loop(game->mlx);
+	// ft_exit(&game);
 }

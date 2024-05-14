@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:55:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 10:39:11 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:50:56 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,26 @@ static void	path_mesure(t_game *game)
 	}
 }
 
-// static int	path_img(t_game *game, t_map *map)
-// {
-// 	int	width;
-// 	int	height;
+static int	path_img(t_game *game, t_map *map)
+{
+	int	w;
+	int	h;
 
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_no, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_so, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_we, &width, &height))
-// 		return (-1);
-// 	if (!mlx_xpm_file_to_image(game->mlx, map->path_ea, &width, &height))
-// 		return (-1);
-// 	return (0);
-// }
+	game->path_n = mlx_xpm_file_to_image(game->mlx, map->path_no, &w, &h);
+	printf("HOLIS\n");
+	if (!game->path_n)
+		return (-1);
+	game->path_s = mlx_xpm_file_to_image(game->mlx, map->path_so, &w, &h);
+	if (!game->path_s)
+		return (-1);
+	game->path_w = mlx_xpm_file_to_image(game->mlx, map->path_we, &w, &h);
+	if (!game->path_w)
+		return (-1);
+	game->path_e = mlx_xpm_file_to_image(game->mlx, map->path_ea, &w, &h);
+	if (!game->path_e)
+		return (-1);
+	return (0);
+}
 
 int	check_path(t_game *game)
 {
@@ -60,7 +65,7 @@ int	check_path(t_game *game)
 		|| !game->map->path_we || !game->map->path_ea
 		|| !game->map->f_color || !game->map->c_color)
 		return (-1);
-	// if (path_img(game, game->map) != 0)
-	// 	return (-1);
+	if (path_img(game, game->map) != 0)
+		return (-1);
 	return (0);
 }

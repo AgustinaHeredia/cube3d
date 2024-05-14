@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 11:25:29 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:37:53 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	game_loop(void *ml)
 
 	game = ml;
 	mlx_destroy_image(game->mlx, game->imagen);
-	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
+	// game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	// hook(mlx, 0, 0); // hook the player
 	raycast(game); // cast the rays
 	mlx_put_image_to_window(game->mlx, game->win, game->imagen, 0, 0);
@@ -61,8 +61,8 @@ int	game_loop(void *ml)
 void	init_window(t_game *game)
 {
 	init_player(game);
-	mlx_loop_hook(game->mlx, &game_loop, &game);
-	mlx_key_hook(game->mlx, &press_key, &game);
-	mlx_loop(game->mlx);
+	// mlx_loop_hook(game->mlx, &game_loop, &game);
+	// mlx_key_hook(game->mlx, &press_key, &game);
+	// mlx_loop(game->mlx);
 	// ft_exit(&game);
 }

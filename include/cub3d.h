@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 14:42:41 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:23:39 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,10 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	void		*imagen;
+	void		*path_n;
+	void		*path_s;
+	void		*path_w;
+	void		*path_e;
 	double		playerPositionX;
 	double		playerPositionY;
 	double		directionVectorX;

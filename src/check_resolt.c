@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/10 10:03:06 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:14:29 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	flood_fill(t_map *map, char **temp, int x, int y)
 	int	len;
 
 	len = ft_strlen(map->map_game[x]);
-	if (x < 0 || x >= map->height || y < 0 || y >= len
+	if (x <= 0 || x >= map->height || y <= 0 || y >= len
 		|| temp[x][y] == '1' || temp[x][y] == 'F' || temp[x][y] == ' ')
 		return ;
 	temp[x][y] = 'F';
@@ -95,9 +95,9 @@ static int	check_flood(char **map, char *line, int row)
 		{
 			if (row == 0 || !map[row + 1])
 				return (-1);
-			if (map[row - 1][x] == ' ')
+			if (map[row - 1][x] == ' ' || map[row - 1][x] == '0')
 				return (-1);
-			if (map[row + 1][x] == ' ')
+			if (map[row + 1][x] == ' ' || map[row + 1][x] == '0')
 				return (-1);
 		}
 		x++;

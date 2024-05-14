@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 14:06:25 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:36:07 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	init_game(t_game *game)
 	init_map(game);
 	game->mlx = NULL;
 	game->win = NULL;
+	game->path_n = NULL;
+	game->path_s = NULL;
+	game->path_w = NULL;
+	game->path_e = NULL;
 }
 
 static void	space_map(t_map *map)

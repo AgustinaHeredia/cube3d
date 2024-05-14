@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:13:35 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/13 16:23:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:38:50 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_map_2d(t_game *game, t_map *map)
 	t_data	img;
 
 	y = -1;
-	img.img = mlx_new_image(game->mlx, 1920, 1080);
+	// img.img = mlx_new_image(game->mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	while (++y < map->height)

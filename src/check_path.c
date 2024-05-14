@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:55:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 17:50:56 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:01:09 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,15 @@ static void	path_mesure(t_game *game)
 	}
 }
 
-static int	path_img(t_game *game, t_map *map)
+static int	path_ok(t_map *map)
 {
-	int	w;
-	int	h;
-
-	game->path_n = mlx_xpm_file_to_image(game->mlx, map->path_no, &w, &h);
-	printf("HOLIS\n");
-	if (!game->path_n)
+	if (ft_strncmp(map->path_no + ft_strlen(map->path_no) - 4, ".xpm", 4))
 		return (-1);
-	game->path_s = mlx_xpm_file_to_image(game->mlx, map->path_so, &w, &h);
-	if (!game->path_s)
+	if (ft_strncmp(map->path_so + ft_strlen(map->path_so) - 4, ".xpm", 4))
 		return (-1);
-	game->path_w = mlx_xpm_file_to_image(game->mlx, map->path_we, &w, &h);
-	if (!game->path_w)
+	if (ft_strncmp(map->path_we + ft_strlen(map->path_we) - 4, ".xpm", 4))
 		return (-1);
-	game->path_e = mlx_xpm_file_to_image(game->mlx, map->path_ea, &w, &h);
-	if (!game->path_e)
+	if (ft_strncmp(map->path_ea + ft_strlen(map->path_ea) - 4, ".xpm", 4))
 		return (-1);
 	return (0);
 }
@@ -65,7 +57,7 @@ int	check_path(t_game *game)
 		|| !game->map->path_we || !game->map->path_ea
 		|| !game->map->f_color || !game->map->c_color)
 		return (-1);
-	if (path_img(game, game->map) != 0)
+	if (path_ok(game->map) != 0)
 		return (-1);
 	return (0);
 }

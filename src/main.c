@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 17:29:35 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:16:54 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	main(int argc, char **argv)
 	init_game(game);
 	read_file(fd, game);
 	check_map(game);
-	printf("El char de init player es %c\n", game->player->player_view);
+	//printf("El char de init player es %c\n", game->player->player_view);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (ft_error("Error. The release could not be started MLX\n"));
-	// init_window(game);
+	init_window(game);
 	// cleaning_all(game);
 	return (0);
 }

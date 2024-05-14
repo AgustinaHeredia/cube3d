@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 10:48:59 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:55:32 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,15 @@ void	load_image(t_game *game, int *texture, char *path, t_img *img)
     }
     // mlx_destroy_image(game->mlx, img->img); // creo que es necesario pero aqui me da problemas
 }
-void    load_texture(t_game *game)
+
+void	load_texture(t_game *game)
 {
-    t_img   img;
-    load_image(game, game->texture[0], game->map->path_no, &img);
-    load_image(game, game->texture[1], game->map->path_so, &img);
-    load_image(game, game->texture[2], game->map->path_we, &img);
-    load_image(game, game->texture[3], game->map->path_ea, &img);
-    // load_image(game, game->texture[0], "./textures/blue.xpm", &img);
-    // load_image(game, game->texture[1], "./textures/green.xpm", &img);
-    // load_image(game, game->texture[2], "./textures/red.xpm", &img);
-    // load_image(game, game->texture[3], "./textures/yellow.xpm", &img);
-    // load_image(game, game->texture[4], "./textures/white.xpm", &img);
-    // load_image(game, game->texture[5], "./textures/mossy.xpm", &img);
-    // load_image(game, game->texture[6], "./textures/wood.xpm", &img);
-    // load_image(game, game->texture[7], "./textures/redbrick.xpm", &img);
+	t_img	img;
+
+	load_image(game, game->texture[0], game->map->path_no, &img);
+	load_image(game, game->texture[1], game->map->path_so, &img);
+	load_image(game, game->texture[2], game->map->path_we, &img);
+	load_image(game, game->texture[3], game->map->path_ea, &img);
 }
 
 void	image_put(t_game *game)
@@ -72,9 +66,9 @@ void	image_put(t_game *game)
 
 int	maths_need(t_game *game, char** worldMap)
 {
-	int x = 0;
-	int y = 0;
-	
+	int	x = 0;
+	int	y;
+
 	while (x < S_WIDTH)
 	{
 		y = 0;
@@ -86,9 +80,8 @@ int	maths_need(t_game *game, char** worldMap)
 		}
 		x++;
 	}
-	
 	x = 0;
-	while(x < S_WIDTH)
+	while (x < S_WIDTH)
 	{
 		double cameraX;
 		cameraX = 2 * x / (double)S_WIDTH - 1;
@@ -225,7 +218,7 @@ int	maths_need(t_game *game, char** worldMap)
 int	raycast(t_game *game)
 {
 	// maths_need(game);
-	maths_need(game, game->map->map_game);
+	// maths_need(game, game->map->map_game);
 	image_put(game);
 
 	return (0);

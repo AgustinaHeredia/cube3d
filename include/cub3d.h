@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 17:23:39 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:10:55 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,11 +154,15 @@ void	print_array(char **array);
 
 //raycast
 int		raycast(t_game *game);
+void	load_texture(t_game *game);
 
 //Keys
 void	rotate_right(t_game *game, t_map *map);
 void	rotate_left(t_game *game, t_map *map);
 void	move_forward(t_game *game, t_map *map);
 void	move_back(t_game *game, t_map *map);
+
+//path
+int		path_img(t_game *game, t_map *map);
 
 #endif

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/14 13:06:37 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/14 22:52:59 by agusheredia      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-FLAGS = -Wall -Werror -Wextra -g -fsanitize='address,undefined'
+FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
 SRC = src/main.c \
 		src/check_arg.c \
 		src/error.c \
@@ -28,6 +28,7 @@ SRC = src/main.c \
 		src/paint_map2d.c \
 		src/raycast.c \
 		src/utils_keys.c \
+		src/path_utils.c \
 
 CC = gcc
 MLX_PATH = mlx/

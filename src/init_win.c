@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:12:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 23:28:01 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	init_player(t_game *game)
 	game->moveSpeed = 0.05;
 	game->rotSpeed = 0.05;
 
-	if (!(game->texture = (int **)malloc(sizeof(int *) * (TEX_WIDTH * TEX_HEIGHT))))
+	if (!(game->texture = (int **)malloc(sizeof(int *) * (TEX_W * TEX_H))))
 		return ; //return (-1);
 	int i = 0;
 	while (i < 8)
 	{
-		if (!(game->texture[i] = (int *)malloc(sizeof(int) * (TEX_WIDTH * TEX_HEIGHT))))
+		if (!(game->texture[i] = (int *)malloc(sizeof(int) * (TEX_W * TEX_H))))
 			return ; //return (-1);
 		i++;
 	}
@@ -36,7 +36,7 @@ void	init_player(t_game *game)
 	while(i < 8)
 	{
 		// j = 0; // no OG
-		while(j < TEX_WIDTH * TEX_HEIGHT)
+		while(j < TEX_W * TEX_H)
 		{
 			game->texture[i][j] = 0;
 			j++;

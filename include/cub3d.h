@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:33 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 23:33:48 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@
 # define MAP_HEIGHT 24
 # define S_WIDTH 1280
 # define S_HEIGHT 720
-# define TEX_WIDTH 32
-# define TEX_HEIGHT 32
+# define TEX_W 32
+# define TEX_H 32
+# define X 0
+# define Y 1
 
 typedef struct s_img
 {
@@ -77,11 +79,65 @@ typedef struct s_keydata
 	int		action;
 }	t_keydata;
 
+typedef struct s_ray
+{
+	double		p_pos_x;
+	double		p_pos_y;
+	double		plane_x;
+	double		plane_y;
+	double		move_speed;
+	double		rot_speed;
+	double		dir_vector_x;
+	double		dir_vector_y;
+}	t_ray;
+
+typedef struct s_maths
+{
+	double cameraX;
+
+	double rayDirX;
+	double rayDirY;
+
+	int mapX;
+	int mapY;
+
+	double sideDistX;
+	double sideDistY;
+
+	double deltaDistX;
+	double deltaDistY;
+
+	double perpWallDist;
+
+	int	stepX;
+	int stepY;
+	int hit;
+	int side;
+	int	*side_texture;
+
+	long lineHeight;
+
+	int drawStart;
+	int drawEnd;
+
+	int texNum;
+
+	double wallX;
+
+	int texX;
+	int texY;
+	
+	double step;
+	double texPos;
+
+}	t_maths;
 
 typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
+	int		init_x;
+	int		init_y;
 	char	player_view;
 	double	angle;
 	int		up_down;
@@ -111,6 +167,8 @@ typedef struct s_game
 {
 	t_map		*map;
 	t_player	*player;
+	t_ray		ray;
+	t_maths		maths;
 	void		*mlx;
 	void		*win;
 	void		*imagen;
@@ -170,8 +228,11 @@ void	mesure_player(t_player *player, char view);
 void	print_array(char **array);
 
 //raycast
+void	init_raycast(t_game *game);
 int		raycast(t_game *game);
 void	load_texture(t_game *game);
+void	init_ray(t_game *game);
+int		init_texture(t_game *game);
 
 //Keys
 void	rotate_player(t_game *game, int rote);

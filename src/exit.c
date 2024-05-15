@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/06 13:36:12 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 23:11:35 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	exit_game(t_game *game)
 	free_map(game->map->file);
 	free(game->map);
 	free(game->player);
-	free(game);
 	ft_printf("Ooohhh... you're out of the game\n");
 	exit(0);
 }

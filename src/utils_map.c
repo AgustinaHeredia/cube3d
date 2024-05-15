@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 13:58:32 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:55:31 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,18 @@ size_t	ft_wordcount(char *s, char sep)
 		i++;
 	}
 	return (count);
+}
+
+int	malloc_control(t_game *game)
+{
+	game->map = malloc(sizeof(t_map) * 1);
+	if (!game->map)
+		return (ft_error("Error: malloc failed map"));
+	game->player = (t_player *)malloc(sizeof(t_player) * 1);
+	if (!game->player)
+	{
+		free(game->map);
+		return (ft_error("Error: malloc failed player"));
+	}
+	return (0);
 }

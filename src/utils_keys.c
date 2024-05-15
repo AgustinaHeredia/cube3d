@@ -3,33 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   utils_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 22:58:55 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/15 13:42:00 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void	rotate_right(t_game *game, t_map *map)
-// {
-// 	double	oldDirX;
-// 	double	oldPlaneX;
+void	rotate_player(t_game *game, int rote)
+{}
 
-// 	oldDirX = game->dirX;
-// 	game->dirX = game->dirX * cos(-ROTATION_SPEED) - game->dirY * sin(-ROTATION_SPEED);
-// 	game->dirY = oldDirX * sin(-ROTATION_SPEED) + game->dirY * cos(-ROTATION_SPEED);
-// 	oldPlaneX = game->planeX;
-// 	game->planeX = game->planeX * cos(-ROTATION_SPEED) - game->planeY * sin(-ROTATION_SPEED);
-// 	game->planeY = oldPlaneX * sin(-ROTATION_SPEED) + game->planeY * cos(-ROTATION_SPEED);
-// }
+void	move_player(t_game *game, double move_x, double move_y)
+{}
 
-// void	rotate_left(t_game *game, t_map *map)
-// {}
+void	key_release(t_keydata keydata, t_game *game)
+{
+	if (keydata.key == KEY_W && keydata.action == KEY_RELEASE)
+		game->player->up_down = 0;
+	else if (keydata.key == KEY_A && keydata.action == KEY_RELEASE)
+		game->player->left_right = 0;
+	else if (keydata.key == KEY_S && keydata.action == KEY_RELEASE)
+		game->player->up_down = 0;
+	else if (keydata.key == KEY_D && keydata.action == KEY_RELEASE)
+		game->player->left_right = 0;
+	else if (keydata.key == KEY_LEFT && keydata.action == KEY_RELEASE)
+		game->player->rote = 0;
+	else if (keydata.key == KEY_RIGHT && keydata.action == KEY_RELEASE)
+		game->player->rote = 0;
+}
 
-// void	move_forward(t_game *game, t_map *map)
-// {}
-
-// void	move_back(t_game *game, t_map *map)
-// {}
+void	hook_player(t_game *game, double move_x, double move_y)
+{
+	if (game->player->rote == 1)
+		rotate_player(game, 1);
+	if (game->player->rote == -1)
+		rotate_player(game, -1);
+	if (game->player->up_down == 1)
+	{
+		move_x = ;
+		move_y = ;
+	}
+	if (game->player->up_down == -1)
+	{
+		move_x = ;
+		move_y = ;
+	}
+	if (game->player->left_right == 1)
+	{
+		move_x = ;
+		move_y = ;
+	}
+	if (game->player->left_right == -1)
+	{
+		move_x = ;
+		move_y = ;
+	}
+	move_player(game, move_x, move_y);
+}

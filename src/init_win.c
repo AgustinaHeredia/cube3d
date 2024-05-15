@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 23:01:01 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/15 13:12:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_player(t_game *game)
 {
-	game->playerPositionX = game->player->player_x;
-	game->playerPositionY = game->player->player_y;
+	game->p_pos_x = game->player->player_x;
+	game->p_pos_y = game->player->player_y;
 	game->planeX = 0;
 	game->planeY = 0.66;
 	game->moveSpeed = 0.05;
@@ -55,8 +55,9 @@ int	game_loop(void *ml)
 		mlx_destroy_image(game->mlx, game->imagen);
 		game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	}
-	// hook(game->mlx, 0, 0); // hook the player
-	// raycast(game); // cast the rays
+	// hook_player(game);
+	raycast(game); // cast the rays
+	// draw_map_2d(game, game->map);
 	// mlx_put_image_to_window(game->mlx, game->win, game->imagen, 0, 0);
 	return (0);
 }
@@ -67,8 +68,8 @@ void	init_window(t_game *game)
 	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	path_img(game, game->map);
 	init_player(game);
+	draw_map_2d(game, game->map);
 	mlx_key_hook(game->win, &press_key, game);
-	// mlx_hook(game->win, 17, 1L << 17, &exit_game, game);
 	// mlx_loop_hook(game->mlx, &game_loop, &game);
 	mlx_loop(game->mlx);
 }

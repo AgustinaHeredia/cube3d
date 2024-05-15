@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 22:35:35 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/15 13:41:12 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	malloc_control(t_game *game)
+static void	initialize_player(t_game *game)
 {
-	game->map = malloc(sizeof(t_map) * 1);
-	if (!game->map)
-		return (ft_error("Error: malloc failed map"));
-	game->player = (t_player *)malloc(sizeof(t_player) * 1);
-	if (!game->player)
-	{
-		free(game->map);
-		return (ft_error("Error: malloc failed player"));
-	}
-	return (0);
+	game->player->player_x = 0;
+	game->player->player_y = 0;
+	game->player->up_down = 0;
+	game->player->left_right = 0;
+	game->player->move_x = 0;
+	game->player->move_y = 0;
+	game->player->rote = 0;
+	game->player->angle = 0;
 }
 
-void	init_map(t_game *game)
+static void	init_map(t_game *game)
 {
 	game->map->map_game = NULL;
 	game->map->height = 0;
@@ -49,6 +47,7 @@ void	init_game(t_game *game)
 	if (flag == 1)
 		return ;
 	init_map(game);
+	initialize_player(game);
 	game->mlx = NULL;
 	game->win = NULL;
 	game->imagen = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 22:10:55 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/15 13:40:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
+# include <time.h>
+# include <math.h>
 
 # define TILE_SIZE_R 16
 # define FOV 60
@@ -60,20 +62,33 @@ typedef struct s_img
 	int		img_height;
 }	t_img;
 
-typedef struct s_data
+typedef struct s_pixel
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	t_data;
+}	t_pixel;
+
+typedef struct s_keydata
+{
+	int		key;
+	int		action;
+}	t_keydata;
+
 
 typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
 	char	player_view;
+	double	angle;
+	int		up_down;
+	int		left_right;
+	int		move_x;
+	int		move_y;
+	int		rote;
 }	t_player;
 
 typedef struct s_map
@@ -103,8 +118,8 @@ typedef struct s_game
 	void		*path_s;
 	void		*path_w;
 	void		*path_e;
-	double		playerPositionX;
-	double		playerPositionY;
+	double		p_pos_x;
+	double		p_pos_y;
 	double		directionVectorX;
 	double		directionVectorY;
 	double		planeX;
@@ -129,7 +144,7 @@ int		check_path(t_game *game);
 int		check_color(t_game *game);
 //game
 int		exit_game(t_game *game);
-int		press_key(int key_code, t_game *game);
+int		press_key(t_keydata keydata, t_game *game);
 void	init_window(t_game *game);
 void	draw_map_2d(t_game *game, t_map *map);
 
@@ -146,8 +161,9 @@ char	*ft_spalloc(size_t count);
 void	map_mesures(t_map *map);
 void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	draw_square(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+void	draw_square(t_pixel *data, int x, int y, int color);
+int		malloc_control(t_game *game);
 
 //utils debug
 void	print_array(char **array);
@@ -157,10 +173,9 @@ int		raycast(t_game *game);
 void	load_texture(t_game *game);
 
 //Keys
-void	rotate_right(t_game *game, t_map *map);
-void	rotate_left(t_game *game, t_map *map);
-void	move_forward(t_game *game, t_map *map);
-void	move_back(t_game *game, t_map *map);
+void	rotate_player(t_game *game, int rote);
+void	move_player(t_game *game, double move_x, double move_y);
+void	key_release(t_keydata keydata, t_game *game);
 
 //path
 int		path_img(t_game *game, t_map *map);

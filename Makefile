@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/15 10:53:18 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/15 15:03:48 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = src/main.c \
 		src/raycast.c \
 		src/utils_keys.c \
 		src/path_utils.c \
+		src/utils_player.c \
 
 CC = gcc
 MLX_PATH = mlx/

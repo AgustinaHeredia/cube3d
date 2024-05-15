@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:40:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:11:33 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 void	draw_square(t_pixel *data, int x, int y, int color);
 int		malloc_control(t_game *game);
+void	mesure_player(t_player *player, char view);
 
 //utils debug
 void	print_array(char **array);

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/14 17:14:29 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:11:24 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	player_position(t_map *map, t_player *player)
 			{
 				player->player_x = row;
 				player->player_y = col;
-				player->player_view = map->map_game[row][col];
+				mesure_player(player, map->map_game[row][col]);
 			}
 			col++;
 		}

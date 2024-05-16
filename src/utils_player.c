@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:03:28 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:04 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:08:48 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	mesure_player(t_player *player, char view)
 {
-	player->player_view = view;
-	if (view == 'N')
-		player->angle = 0;
-	else if (view == 'E')
-		player->angle = 90;
-	else if (view == 'S')
-		player->angle = 180;
-	else if (view == 'W')
+	player->init_pos = view;
+	if (player->init_pos == 'N')
 		player->angle = 270;
-}
+	else if (player->init_pos == 'S')
+		player->angle = 180;
+	else if (player->init_pos == 'W')
+		player->angle = 90;
+	else if (player->init_pos == 'E')
+		player->angle = 0;
+} // init_pos == init_pos
+// posibilidad que haya que cambiar angulos

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/09 15:24:17 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:50:13 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	map_mesures(t_map *map)
 
 void	check_map(t_game *game)
 {
-	if (all_char_valid(game->map) != 0)
+	if (all_char_valid(&game->map) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
-	if (check_map_resolt(game->map, game->player) != 0)
+	if (check_map_resolt(&game->map, &game->player) != 0)
 		error_free_exit(game, "Error. El mapa no tiene solución.\n");
 	if (check_path(game) != 0)
 		error_free_exit(game, "Error. El path no es correcto\n");

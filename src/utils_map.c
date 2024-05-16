@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:55:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:51:47 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,38 @@ size_t	ft_wordcount(char *s, char sep)
 	}
 	return (count);
 }
-
-int	malloc_control(t_game *game)
+void	angle_player(t_game *game)
 {
-	game->map = malloc(sizeof(t_map) * 1);
-	if (!game->map)
-		return (ft_error("Error: malloc failed map"));
-	game->player = (t_player *)malloc(sizeof(t_player) * 1);
-	if (!game->player)
-	{
-		free(game->map);
-		return (ft_error("Error: malloc failed player"));
-	}
-	return (0);
+	if (game->player.init_pos == 'N')
+		game->player.angle = 270;
+	else if (game->player.init_pos == 'S')
+		game->player.angle = 180;
+	else if (game->player.init_pos == 'W')
+		game->player.angle = 90;
+	else if (game->player.init_pos == 'E')
+		game->player.angle = 0;
 }
+
+void	dir_player(t_game *game)
+{
+	if (game->player.init_pos == 'N') // este caso esta bien
+	{
+		game->ray.dir_vector_x = -1;
+		game->ray.dir_vector_y = 0;
+	}
+	else if (game->player.init_pos == 'S') // este caso esta bien
+	{
+		game->ray.dir_vector_x = 1;
+		game->ray.dir_vector_y = 0;
+	}
+	else if (game->player.init_pos == 'W')
+	{
+		game->ray.dir_vector_x = 0;
+		game->ray.dir_vector_y = 1;
+	}
+	else if (game->player.init_pos == 'E')
+	{
+		game->ray.dir_vector_x = 0;
+		game->ray.dir_vector_y = -1;
+	}
+} // el eje X apunta hacia la derecha y el eje Y apunta hacia arriba.

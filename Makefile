@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/15 15:03:48 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/16 16:06:45 by pquintan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ SRC = src/main.c \
 		src/check_arg.c \
 		src/error.c \
 		src/init_game.c \
-		src/init_win.c \
 		src/key_press.c \
 		src/exit.c \
 		src/check_map.c \
@@ -29,7 +28,7 @@ SRC = src/main.c \
 		src/raycast.c \
 		src/utils_keys.c \
 		src/path_utils.c \
-		src/utils_player.c \
+		src/utils_player.c 
 
 CC = gcc
 MLX_PATH = mlx/

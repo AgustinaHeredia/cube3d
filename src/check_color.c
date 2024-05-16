@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/13 16:29:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:49:51 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	check_color(t_game *game)
 	size_t	count_f;
 	size_t	count_c;
 
-	count_f = ft_wordcount(game->map->f_color, ',');
-	count_c = ft_wordcount(game->map->c_color, ',');
+	count_f = ft_wordcount(game->map.f_color, ',');
+	count_c = ft_wordcount(game->map.c_color, ',');
 	if (count_f != 3 && count_c != 3)
 		return (-1);	
-	floor = ft_split(game->map->f_color, ',');
-	ceiling = ft_split(game->map->c_color, ',');
+	floor = ft_split(game->map.f_color, ',');
+	ceiling = ft_split(game->map.c_color, ',');
 	if (ft_atoi(floor[0]) < 0 || ft_atoi(floor[0]) > 255
 		|| ft_atoi(floor[1]) < 0 || ft_atoi(floor[1]) > 255
 		|| ft_atoi(floor[2]) < 0 || ft_atoi(floor[2]) > 255
@@ -49,7 +49,7 @@ int	check_color(t_game *game)
 		|| ft_atoi(ceiling[1]) < 0 || ft_atoi(ceiling[1]) > 255
 		|| ft_atoi(ceiling[2]) < 0 || ft_atoi(ceiling[2]) > 255)
 		return (-1);
-	mesure_color(game->map, floor, ceiling);
+	mesure_color(&game->map, floor, ceiling);
 	free_map(floor);
 	free_map(ceiling);
 	return (0);

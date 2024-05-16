@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_resolt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:24 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:57:40 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	player_position(t_map *map, t_player *player)
 				|| map->map_game[row][col] == 'W'
 				|| map->map_game[row][col] == 'E')
 			{
+				player->init_x = row;
+				player->init_y = col;
 				player->player_x = row;
 				player->player_y = col;
 				mesure_player(player, map->map_game[row][col]);
@@ -95,9 +97,9 @@ static int	check_flood(char **map, char *line, int row)
 		{
 			if (row == 0 || !map[row + 1])
 				return (-1);
-			if (map[row - 1][x] == ' ' || map[row - 1][x] == '0')
+			if (map[row - 1][x] == ' ')
 				return (-1);
-			if (map[row + 1][x] == ' ' || map[row + 1][x] == '0')
+			if (map[row + 1][x] == ' ')
 				return (-1);
 		}
 		x++;
@@ -112,7 +114,7 @@ int	check_map_resolt(t_map *map, t_player *player)
 
 	player_position(map, player);
 	temp = create_copy_map(map->map_game, map->height);
-	flood_fill(map, temp, player->player_x, player->player_y);
+	flood_fill(map, temp, player->init_x, player->init_y);
 	i = 0;
 	while (temp[i])
 	{

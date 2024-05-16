@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:50:27 by agusheredia       #+#    #+#             */
-/*   Updated: 2024/05/14 21:50:53 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/16 16:00:48 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	path_img(t_game *game, t_map *map)
+int	path_img(t_game *game, t_map *map) // new var void * in game struct
 {
 	int	w;
 	int	h;

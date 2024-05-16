@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 13:00:27 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:04:25 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <time.h>
 # include <math.h>
 
+// move keys
 # define TILE_SIZE_R 16
 # define FOV 60
 # define ROTATION_SPEED 0.045
@@ -31,20 +32,18 @@
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
 
-# define KEY_ESC	53
-# define KEY_W		13
-# define KEY_A		0
-# define KEY_S		1
-# define KEY_D		2
-# define KEY_LEFT	262
-# define KEY_RIGHT	263
-
+# define KEY_ESC		53
+# define KEY_W			13
+# define KEY_A			0
+# define KEY_S			1
+# define KEY_D			2
+# define KEY_LEFT		262
+# define KEY_RIGHT		263
 # define KEY_RELEASE 	0
 # define KEY_PRESS		1
 # define KEY_REPEAT 	2
 
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
+// raycast
 # define S_WIDTH 1280
 # define S_HEIGHT 720
 # define TEX_W 32
@@ -52,7 +51,8 @@
 # define X 0
 # define Y 1
 
-typedef struct s_img
+//raycast
+typedef struct  s_img
 {
 	void	*img;
 	int		*data;
@@ -64,6 +64,7 @@ typedef struct s_img
 	int		img_height;
 }	t_img;
 
+//parseo
 typedef struct s_pixel
 {
 	void	*img;
@@ -79,67 +80,14 @@ typedef struct s_keydata
 	int		action;
 }	t_keydata;
 
-typedef struct s_ray
-{
-	double		p_pos_x;
-	double		p_pos_y;
-	double		plane_x;
-	double		plane_y;
-	double		move_speed;
-	double		rot_speed;
-	double		dir_vector_x;
-	double		dir_vector_y;
-}	t_ray;
-
-typedef struct s_maths
-{
-	double cameraX;
-
-	double rayDirX;
-	double rayDirY;
-
-	int mapX;
-	int mapY;
-
-	double sideDistX;
-	double sideDistY;
-
-	double deltaDistX;
-	double deltaDistY;
-
-	double perpWallDist;
-
-	int	stepX;
-	int stepY;
-	int hit;
-	int side;
-	int	*side_texture;
-
-	long lineHeight;
-
-	int drawStart;
-	int drawEnd;
-
-	int texNum;
-
-	double wallX;
-
-	int texX;
-	int texY;
-	
-	double step;
-	double texPos;
-
-}	t_maths;
-
 typedef struct s_player
 {
-	int		player_x;
-	int		player_y;
 	int		init_x;
 	int		init_y;
-	char	player_view;
-	double	angle;
+	int		player_x;
+	int		player_y;
+	char	init_pos; // N, S, W, E
+	float	angle; //anterior double
 	int		up_down;
 	int		left_right;
 	int		move_x;
@@ -163,33 +111,78 @@ typedef struct s_map
 	int		ceiling;
 }	t_map;
 
+typedef struct s_ray
+{
+	double		p_pos_x;
+	double		p_pos_y;
+	double		plane_x;
+	double		plane_y;
+	double		move_speed;
+	double		rot_speed;
+	double		dir_vector_x;
+	double		dir_vector_y;
+}	t_ray;
+
+typedef struct s_maths
+{
+	double camera_x;
+
+	double ray_dir_x;
+	double ray_dir_y;
+
+	int map_x;
+	int map_y;
+
+	double side_dist_x;
+	double side_dist_y;
+
+	double delta_dist_x;
+	double delta_dist_y;
+
+	double perp_wall_dist;
+
+	int	step_x;
+	int step_y;
+	int hit;
+	int side;
+	int	*side_texture;
+
+	long line_height;
+
+	int draw_start;
+	int draw_end;
+
+	int tex_num; // texture number
+
+	double wall_x;
+
+	int tex_x;
+	int tex_y;
+	
+	double step;
+	double tex_pos;
+
+}	t_maths;
+
 typedef struct s_game
 {
-	t_map		*map;
-	t_player	*player;
+	t_map		map;
 	t_ray		ray;
+	t_player	player;
 	t_maths		maths;
+	t_img		img;
 	void		*mlx;
 	void		*win;
-	void		*imagen;
 	void		*path_n;
 	void		*path_s;
 	void		*path_w;
 	void		*path_e;
-	double		p_pos_x;
-	double		p_pos_y;
-	double		directionVectorX;
-	double		directionVectorY;
-	double		planeX;
-	double		planeY;
-	double		moveSpeed;
-	double		rotSpeed;
+// raycast
 	int			**texture;
-	t_img		img;
 	int			buf[S_HEIGHT][S_WIDTH];
 }	t_game;
 
-//check arg
+// check_arg
 int		check_arg_and_fd(int argc, char **argv);
 
 //init
@@ -200,10 +193,10 @@ int		all_char_valid(t_map *map);
 int		check_map_resolt(t_map *map, t_player *player);
 int		check_path(t_game *game);
 int		check_color(t_game *game);
+
 //game
 int		exit_game(t_game *game);
 int		press_key(t_keydata keydata, t_game *game);
-void	init_window(t_game *game);
 void	draw_map_2d(t_game *game, t_map *map);
 
 //error files
@@ -221,18 +214,33 @@ void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 void	draw_square(t_pixel *data, int x, int y, int color);
-int		malloc_control(t_game *game);
 void	mesure_player(t_player *player, char view);
 
 //utils debug
 void	print_array(char **array);
 
-//raycast
+// raycast
 void	init_raycast(t_game *game);
-int		raycast(t_game *game);
-void	load_texture(t_game *game);
-void	init_ray(t_game *game);
 int		init_texture(t_game *game);
+void	init_ray(t_game *game);
+int		raycast(t_game *game);
+int		maths_need(t_game *game, char **map);
+void	init_var(t_maths *maths);
+void	draw(t_game *game, t_maths *maths, t_ray *ray, int x, char **map);
+int		get_texture(t_game *game, t_maths *maths);
+void	calculating_line_height(t_maths *maths, t_ray *ray, char **map);
+void	perp_dist(t_maths *maths, t_ray *ray);
+void	hit(t_maths *maths, char **map);
+void	step_side_dist(t_game *game, t_maths *maths);
+
+void	paint_top_bottom(t_game *game);
+void	init_maths(t_maths *maths, t_ray *ray, int x);
+
+void	image_put(t_game *game);
+void	load_texture(t_game *game);
+void	load_image(t_game *game, int *texture, char *path, t_img *img);
+void	angle_player(t_game *game); //cambio por mesures_player
+void	dir_player(t_game *game);
 
 //Keys
 void	rotate_player(t_game *game, int rote);

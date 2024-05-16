@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:04:25 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:34:35 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ void	mesure_player(t_player *player, char view);
 void	print_array(char **array);
 
 // raycast
-void	init_raycast(t_game *game);
+int		init_raycast(t_game *game);
 int		init_texture(t_game *game);
 void	init_ray(t_game *game);
 int		raycast(t_game *game);

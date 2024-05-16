@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 23:33:48 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/16 13:00:27 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ int		init_texture(t_game *game);
 void	rotate_player(t_game *game, int rote);
 void	move_player(t_game *game, double move_x, double move_y);
 void	key_release(t_keydata keydata, t_game *game);
+void	hook_player(t_game *game, double move_x, double move_y);
 
 //path
 int		path_img(t_game *game, t_map *map);

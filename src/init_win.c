@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 23:28:01 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/16 13:04:22 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	game_loop(void *ml)
 	t_game	*game;
 
 	game = ml;
-	if (game->imagen)
-	{
-		mlx_destroy_image(game->mlx, game->imagen);
-		game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
-	}
-	// hook_player(game);
+	// if (game->imagen)
+	// {
+	// 	// mlx_destroy_image(game->mlx, game->imagen);
+	// 	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
+	// }
+	hook_player(game, 0, 0);
 	raycast(game); // cast the rays
 	// draw_map_2d(game, game->map);
 	// mlx_put_image_to_window(game->mlx, game->win, game->imagen, 0, 0);
@@ -68,8 +68,8 @@ void	init_window(t_game *game)
 	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	path_img(game, game->map);
 	init_player(game);
-	draw_map_2d(game, game->map);
+	// draw_map_2d(game, game->map);
 	mlx_key_hook(game->win, &press_key, game);
-	// mlx_loop_hook(game->mlx, &game_loop, &game);
+	mlx_loop_hook(game->mlx, &game_loop, &game);
 	mlx_loop(game->mlx);
 }

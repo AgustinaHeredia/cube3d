@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:24:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 13:04:22 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:43:11 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	init_window(t_game *game)
 	game->imagen = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	path_img(game, game->map);
 	init_player(game);
-	// draw_map_2d(game, game->map);
+	draw_map_2d(game, game->map);
 	mlx_key_hook(game->win, &press_key, game);
-	mlx_loop_hook(game->mlx, &game_loop, &game);
+	// mlx_loop_hook(game->mlx, &game_loop, &game);
 	mlx_loop(game->mlx);
 }

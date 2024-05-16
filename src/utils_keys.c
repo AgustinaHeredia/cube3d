@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 14:35:44 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:07:33 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,16 @@ void	move_player(t_game *game, double move_x, double move_y)
 
 	new_x = roundf(game->player->player_x + move_x);
 	new_y = roundf(game->player->player_y + move_y);
-	if (new_x >= 0 && new_x < game->map->width && new_y >= 0 && new_y < game->map->height)
+	map_grid_x = (new_x / TILE_SIZE_R);
+	map_grid_y = (new_y / TILE_SIZE_R);
+	if (game->map->map_game[map_grid_y][map_grid_x] != '1' && \
+	(game->map->map_game[map_grid_y][game->player->player_x / TILE_SIZE_R] \
+	!= '1' && \
+	game->map->map_game[game->player->player_y / TILE_SIZE_R][map_grid_x] \
+	!= '1'))
 	{
-		map_grid_x = (new_x / TILE_SIZE_R);
-		map_grid_y = (new_y / TILE_SIZE_R);
-		if (game->map->map_game[map_grid_y][map_grid_x] != '1' && \
-		(game->map->map_game[map_grid_y][game->player->player_x / TILE_SIZE_R] != '1'
-		&& game->map->map_game[game->player->player_y / TILE_SIZE_R][map_grid_x] != '1'))
-		{
-			game->player->player_x = new_x;
-			game->player->player_y = new_y;
-		}
+		game->player->player_x = new_x;
+		game->player->player_y = new_y;
 	}
 }
 

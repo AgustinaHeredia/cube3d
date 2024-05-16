@@ -6,7 +6,11 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
+<<<<<<< main
 /*   Updated: 2024/05/16 19:21:00 by pquintan         ###   ########.fr       */
+=======
+/*   Updated: 2024/05/16 18:00:10 by pquintan         ###   ########.fr       */
+>>>>>>> pquintan
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,20 +135,20 @@ void hit(t_maths *maths, char **map)
 			maths->side_dist_x += maths->delta_dist_x;
 			maths->map_x += maths->step_x;
 			maths->side = 0;
-			// maths->side_texture[X] = 1;
-			// maths->side_texture[Y] = 0;
-			// if (maths->step_x < 0)
-			// 	maths->side_texture[X] = -1;
+			maths->side_texture[X] = 1;
+			maths->side_texture[Y] = 0;
+			if (maths->step_x < 0)
+				maths->side_texture[X] = -1;
 		}
 		else
 		{
 			maths->side_dist_y += maths->delta_dist_y;
 			maths->map_y += maths->step_y;
 			maths->side = 1;
-			// maths->side_texture[X] = 0;
-			// maths->side_texture[Y] = 1;
-			// if (maths->step_y < 0)
-			// 	maths->side_texture[Y] = -1;
+			maths->side_texture[X] = 0;
+			maths->side_texture[Y] = 1;
+			if (maths->step_y < 0)
+				maths->side_texture[Y] = -1;
 		}
 		if (map[maths->map_x][maths->map_y] != '0')
 			maths->hit = 1;
@@ -175,8 +179,9 @@ void calculating_line_height(t_maths *maths, t_ray *ray, char **map)
 	maths->draw_end = maths->line_height / 2 + S_HEIGHT / 2;
 	if (maths->draw_end >= S_HEIGHT)
 		maths->draw_end = S_HEIGHT - 1;
-
-	maths->tex_num = map[maths->map_x][maths->map_y] - '0';
+	(void)map;
+	// maths->tex_num = map[maths->map_x][maths->map_y] - '0';
+	// printf("1r: tex_num: %d\n", maths->tex_num);
 	
 	if (maths->side == 0)
 		maths->wall_x = ray->p_pos_y + maths->perp_wall_dist * maths->ray_dir_y;
@@ -188,21 +193,22 @@ void calculating_line_height(t_maths *maths, t_ray *ray, char **map)
 
 int	get_texture(t_game *game, t_maths *maths)
 {
-	// if (maths->side_texture[X] == 0)
-	if (maths->side == 0)
+	(void)game;
+	if (maths->side_texture[X] == 0)
+	// if (maths->side == 0)
 	{
 		if (maths->side_texture[Y] == 1)
-			return (game->texture[0][TEX_H * maths->tex_y + maths->tex_x]);
+			return(0); // return (game->texture[0][TEX_H * maths->tex_y + maths->tex_x]);
 		else
-			return (game->texture[1][TEX_H * maths->tex_y + maths->tex_x]);
+			return(1); // return (game->texture[1][TEX_H * maths->tex_y + maths->tex_x]);
 	}
 	else
 	{
-		// if (maths->side_texture[Y] == 1)
-		if (maths->side == 1)
-			return (game->texture[2][TEX_H * maths->tex_y + maths->tex_x]);
+		if (maths->side_texture[Y] == 1)
+		// if (maths->side == 1)
+			return(2); // return (game->texture[2][TEX_H * maths->tex_y + maths->tex_x]);
 		else
-			return (game->texture[3][TEX_H * maths->tex_y + maths->tex_x]);
+			return(3); // return (game->texture[3][TEX_H * maths->tex_y + maths->tex_x]);
 	}
 }
 
@@ -225,7 +231,8 @@ void	draw(t_game *game, t_maths *maths, t_ray *ray, int x, char **map)
 		maths->tex_y = (int)maths->tex_pos & (TEX_H - 1);
 		maths->tex_pos += maths->step;
 		int texture;
-		// texture = get_texture(game, &game->maths);
+		maths->tex_num = get_texture(game, &game->maths);
+		// printf("tex_num: %d\n", maths->tex_num);
 		texture = game->texture[maths->tex_num][TEX_H * maths->tex_y + maths->tex_x];
 		// if (maths->side == 1)
 		// 	texture = (texture >> 1) & 8355711; // no needed, used for shading lateral walls
@@ -236,6 +243,9 @@ void	draw(t_game *game, t_maths *maths, t_ray *ray, int x, char **map)
 
 void	init_var(t_maths *maths)
 {
+	maths->side_texture = malloc(sizeof(int) * 3);
+	if (!maths->side_texture)
+		return ;
 	maths->camera_x = 0;
 	maths->ray_dir_x = 0;
 	maths->ray_dir_y = 0;
@@ -342,10 +352,17 @@ int	init_raycast(t_game *game)
 	if (path_img(game, &game->map) == -1)
 		return (ft_error("Error. Path is not valid\n"));
 	// init path .xpm en void
+<<<<<<< main
 	mlx_key_hook(game->win, &press_key, game); // evaluar cual de las dos es la correcta
 	mlx_loop_hook(game->mlx, &raycast, game);
 	// draw_map_2d(game, &game->map); // minimapa
 	// mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_release, game);
+=======
+	// draw_map_2d(game, game->map); // minimapa
+	mlx_key_hook(game->win, &press_key, game); // evaluar cual de las dos es la correcta
+	mlx_loop_hook(game->mlx, &raycast, game);
+	// mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &press_key, game);
+>>>>>>> pquintan
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop(game->mlx);
 	return (0);

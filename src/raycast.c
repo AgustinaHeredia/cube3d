@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/16 16:13:38 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:34:20 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,17 +330,20 @@ int	init_texture(t_game *game)
 	return (0);
 }
 
-void	init_raycast(t_game *game)
+int	init_raycast(t_game *game)
 {
 	game->win = mlx_new_window(game->mlx, S_WIDTH, S_HEIGHT, "Cub3D");
 	game->img.img = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.size_l, &game->img.endian);
 
-	// path_img(game, game->map); // init path .xpm en void
+	if (path_img(game, &game->map) == -1)
+		return (ft_error("Error. Path is not valid\n"));
+	// init path .xpm en void
 	// draw_map_2d(game, game->map); // minimapa
 	mlx_loop_hook(game->mlx, &raycast, game);
 	mlx_key_hook(game->win, &press_key, game); // evaluar cual de las dos es la correcta
 	// mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &press_key, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop(game->mlx);
+	return (0);
 }

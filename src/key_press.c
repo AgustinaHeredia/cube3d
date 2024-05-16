@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:32:23 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 17:49:04 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:22:06 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move_w(t_game *game, t_map *map)
 	int	x;
 	int	y;
 
-	printf("Presiona W\n");
+	// printf("Presiona W\n");
 	x = game->player.player_x;
 	y = game->player.player_y;
 	if (x - 1 >= 0 && map->map_game[x - 1][y] != '1')
@@ -90,18 +90,18 @@ int	press_key(t_keydata keydata, t_game *game)
 	}
 	if (keydata.key == KEY_W)
 		move_w(game, &game->map);
-	if (keydata.key == KEY_A && (keydata.action == KEY_PRESS))
+	if (keydata.key == KEY_A) //&& (keydata.action == KEY_PRESS))
 		move_a(game, &game->map);
-	if (keydata.key == KEY_S && (keydata.action == KEY_PRESS))
+	if (keydata.key == KEY_S) //&& (keydata.action == KEY_PRESS))
 		move_s(game, &game->map);
-	if (keydata.key == KEY_D && (keydata.action == KEY_PRESS))
+	if (keydata.key == KEY_D) //&& (keydata.action == KEY_PRESS))
 		move_d(game, &game->map);
 	if (keydata.key == KEY_LEFT)
 	{
 		printf("LEFT\n");
 		game->player.rote = -1;
 	}
-	if (keydata.key == KEY_RIGHT && (keydata.action == KEY_PRESS))
+	if (keydata.key == KEY_RIGHT) //&& (keydata.action == KEY_PRESS))
 		game->player.rote = 1;
 	key_release(keydata, game);
 	return (0);

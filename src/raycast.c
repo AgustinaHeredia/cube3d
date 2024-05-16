@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/16 17:29:03 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:21:00 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void calculating_line_height(t_maths *maths, t_ray *ray, char **map)
 {
 	// calculate height of line to draw on screen
 	maths->line_height = 0;
+	// printf("maths->perp_wall_dist: %f\n", maths->perp_wall_dist);
 	maths->line_height = (int)(S_HEIGHT / maths->perp_wall_dist);
 
 	// calculate lowest and highest pixel to fill in current stripe
@@ -295,8 +296,8 @@ int	raycast(t_game *game)
 
 void	init_ray(t_game *game)
 {
-	game->ray.p_pos_x = game->player.init_x;
-	game->ray.p_pos_y = game->player.init_y;
+	game->ray.p_pos_x = game->player.player_x;
+	game->ray.p_pos_y = game->player.player_y;
 	game->ray.plane_x = 0;
 	game->ray.plane_y = 0.66; // FOV
 	game->ray.move_speed = 0.05; 

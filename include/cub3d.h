@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 17:26:55 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:25:26 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define TILE_SIZE_R 16
 # define FOV 60
 # define ROTATION_SPEED 0.045
-# define PLAYER_SPEED 2
+# define PLAYER_SPEED 2 // 4 esta bien tambien
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -82,8 +82,8 @@ typedef struct s_keydata
 
 typedef struct s_player
 {
-	int		init_x;
-	int		init_y;
+	int		init_x; // creo que se podran borrar porque actualizo en el movimiento de las keys
+	int		init_y; // creo que se podran borrar porque actualizo en el movimiento de las keys
 	int		player_x;
 	int		player_y;
 	char	init_pos; // N, S, W, E

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:11:36 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:25:54 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	move_player(t_game *game, double move_x, double move_y)
 	}
 }
 
-void	key_release(t_keydata keydata, t_game *game)
+int	key_release(t_keydata keydata, t_game *game)
 {
 	if (keydata.key == KEY_W && keydata.action == KEY_RELEASE)
 		game->player.up_down = 0;
@@ -64,6 +64,7 @@ void	key_release(t_keydata keydata, t_game *game)
 		game->player.rote = 0;
 	else if (keydata.key == KEY_RIGHT && keydata.action == KEY_RELEASE)
 		game->player.rote = 0;
+	return (0);
 }
 
 void	hook_player(t_game *game, double move_x, double move_y)

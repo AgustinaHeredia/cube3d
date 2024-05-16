@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:34:35 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:26:55 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,6 @@ int		check_color(t_game *game);
 
 //game
 int		exit_game(t_game *game);
-int		press_key(t_keydata keydata, t_game *game);
 void	draw_map_2d(t_game *game, t_map *map);
 
 //error files
@@ -243,9 +242,10 @@ void	angle_player(t_game *game); //cambio por mesures_player
 void	dir_player(t_game *game);
 
 //Keys
+int		press_key(t_keydata keydata, t_game *game);
 void	rotate_player(t_game *game, int rote);
 void	move_player(t_game *game, double move_x, double move_y);
-void	key_release(t_keydata keydata, t_game *game);
+int		key_release(t_keydata keydata, t_game *game);
 void	hook_player(t_game *game, double move_x, double move_y);
 
 //path

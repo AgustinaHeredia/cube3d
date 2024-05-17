@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 19:25:26 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:31:09 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
-# define KEY_LEFT		262
-# define KEY_RIGHT		263
+# define KEY_LEFT		123
+# define KEY_RIGHT		124
 # define KEY_RELEASE 	0
 # define KEY_PRESS		1
 # define KEY_REPEAT 	2

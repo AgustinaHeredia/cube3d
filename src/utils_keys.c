@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 17:25:54 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:29:55 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	rotate_player(t_game *game, int rote)
 	{
 		game->player.angle += ROTATION_SPEED;
 		if (game->player.angle > (2 * M_PI))
-			game->player.angle -= 2 * M_PI;
+			// game->player.angle -= 2 * M_PI;
+			game->player.angle -= 90;
 	}
 	else
 	{
 		game->player.angle -= ROTATION_SPEED;
 		if (game->player.angle > (2 * M_PI))
-			game->player.angle += 2 * M_PI;
+			game->player.angle += 90;
+			// game->player.angle += 2 * M_PI;
 	}
 }
 

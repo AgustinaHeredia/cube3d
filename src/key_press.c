@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:32:23 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 19:22:06 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:30:34 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	press_key(t_keydata keydata, t_game *game)
 	if (keydata.key == KEY_LEFT)
 	{
 		printf("LEFT\n");
+		game->player.angle -= 90;
 		game->player.rote = -1;
 	}
 	if (keydata.key == KEY_RIGHT) //&& (keydata.action == KEY_PRESS))

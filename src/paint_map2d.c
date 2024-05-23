@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_map2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:13:35 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 12:34:30 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:09:00 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-void	draw_square(t_pixel *data, int x, int y, int size, int color)
+void	draw_square(t_pixel *data, int x, int y, int color)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < 15)
 	{
 		j = 0;
-		while (j < size)
+		while (j < 15)
 		{
-			if (i == 0 || i == size - 1 || j == 0 || j == size -1)
+			if (i == 0 || i == 15 - 1 || j == 0 || j == 15 -1)
 				my_mlx_pixel_put(data, x + i, y + j, 0x595A5D);
 			else
 				my_mlx_pixel_put(data, x + i, y + j, color);
@@ -54,9 +54,8 @@ static void	draw_player(t_pixel *data, t_game *game, int cell_size)
 		j = 0;
 		while (j < player_size)
 		{
-			my_mlx_pixel_put(data,(game->ray.p_pos_y - 0.2) * cell_size + i, \
+			my_mlx_pixel_put(data, (game->ray.p_pos_y - 0.2) * cell_size + i, \
 			(game->ray.p_pos_x - 0.2) * cell_size + j, 0x2ECC71);
-			// draw_direction_line(data, game, cell_size);
 			j++;
 		}
 		i++;
@@ -69,7 +68,6 @@ void	draw_map_2d(t_game *game, t_map *map)
 	int		y;
 	t_pixel	img;
 
-	(void)game;
 	x = 0;
 	img.img = mlx_new_image(game->mlx, map->width * 15, map->height * 15);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
@@ -80,11 +78,11 @@ void	draw_map_2d(t_game *game, t_map *map)
 		while (y < map->width)
 		{
 			if (map->map_game[x][y] && map->map_game[x][y] == '1')
-				draw_square(&img, y * 15, x * 15, 15, 0xC0E3DC);
+				draw_square(&img, y * 15, x * 15, 0xC0E3DC);
 			else if (map->map_game[x][y] == ' ')
-				draw_square(&img, y * 15, x * 15, 15, 0xFFFFFF);
+				draw_square(&img, y * 15, x * 15, 0xFFFFFF);
 			else
-				draw_square(&img, y * 15, x * 15, 15, 0x5D0D71);
+				draw_square(&img, y * 15, x * 15, 0x5D0D71);
 			y++;
 		}
 		draw_player(&img, game, 15);

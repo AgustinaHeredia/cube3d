@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 17:46:33 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:01:24 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_color(t_game *game)
 	count_f = ft_wordcount(game->map.f_color, ',');
 	count_c = ft_wordcount(game->map.c_color, ',');
 	if (count_f != 3 && count_c != 3)
-		return (-1);	
+		return (-1);
 	floor = ft_split(game->map.f_color, ',');
 	ceiling = ft_split(game->map.c_color, ',');
 	if (ft_atoi(floor[0]) < 0 || ft_atoi(floor[0]) > 255

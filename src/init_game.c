@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 13:21:13 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:57:05 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	initialize_player(t_game *game)
 {
-	game->player.player_x = 0; // init_x
-	game->player.player_y = 0; // init_y
+	game->player.player_x = 0;
+	game->player.player_y = 0;
 	game->player.up_down = 0;
 	game->player.left_right = 0;
 	game->player.rote = 0;
@@ -92,11 +92,10 @@ void	init_game(t_game *game)
 	initialize_player(game);
 	game->mlx = NULL;
 	game->win = NULL;
-
 	game->path_n = NULL;
 	game->path_s = NULL;
 	game->path_w = NULL;
 	game->path_e = NULL;
-	game->ray.plane_x = 0; // set first time only
-	game->ray.plane_y = 0.66; // set first time only
+	game->ray.plane_x = 0;
+	game->ray.plane_y = 0.66;
 }

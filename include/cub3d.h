@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 17:36:26 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:14:58 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define MARGIN 0.1
 
 //raycast
-typedef struct  s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*data;
@@ -78,12 +78,12 @@ typedef struct s_pixel
 
 typedef struct s_player
 {
-	int		init_x; // creo que se podran borrar porque actualizo en el movimiento de las keys
-	int		init_y; // creo que se podran borrar porque actualizo en el movimiento de las keys
+	int		init_x;
+	int		init_y;
 	double	player_x;
 	double	player_y;
-	char	init_pos; // N, S, W, E
-	double	angle; //anterior double y float era el final
+	char	init_pos;
+	double	angle;
 	int		up_down;
 	int		left_right;
 	int		rote;
@@ -121,42 +121,29 @@ typedef struct s_ray
 
 typedef struct s_maths
 {
-	double camera_x;
-
-	double ray_dir_x;
-	double ray_dir_y;
-
-	int map_x;
-	int map_y;
-
-	double side_dist_x;
-	double side_dist_y;
-
-	double delta_dist_x;
-	double delta_dist_y;
-
-	double perp_wall_dist;
-
-	int	step_x;
-	int step_y;
-	int side;
-	int	*side_texture;
-
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		*side_texture;
 	long	line_height;
-
-	int draw_start;
-	int draw_end;
-
-	int tex_num; // texture number
-
-	double wall_x;
-
-	int tex_x;
-	int tex_y;
-	
-	double step;
-	double tex_pos;
-
+	int		draw_start;
+	int		draw_end;
+	int		tex_num;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
 }	t_maths;
 
 typedef struct s_game
@@ -173,7 +160,6 @@ typedef struct s_game
 	void		*path_s;
 	void		*path_w;
 	void		*path_e;
-// raycast
 	int			**texture;
 	int			buf[S_HEIGHT][S_WIDTH];
 }	t_game;
@@ -209,9 +195,8 @@ void	map_mesures(t_map *map);
 void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
-void	draw_square(t_pixel *data, int x, int y, int size, int color);
+void	draw_square(t_pixel *data, int x, int y, int color);
 void	mesure_player(t_player *player, char view);
-void	player_mesure(t_game *game);
 
 //utils debug
 void	print_array(char **array);
@@ -235,17 +220,15 @@ void	init_maths(t_maths *maths, t_ray *ray, int x);
 void	image_put(t_game *game);
 void	load_texture(t_game *game);
 void	load_image(t_game *game, int *texture, char *path, t_img *img);
-void	angle_player(t_game *game); //cambio por mesures_player
+void	angle_player(t_game *game);
 void	dir_player(t_game *game);
 
 //Keys
 int		press_key(int key_code, t_game *game);
 void	rotate_player(t_game *game, double rote);
-// void	rotate_player(t_game *game, double rote);
-// void	move_player(t_game *game, double move_x, double move_y);
 int		key_release(int key_code, t_game *game);
 void	hook_player(t_game *game);
-void 	handle_player_rotation(t_game *game);
+void	handle_player_rotation(t_game *game);
 int		mouse_move(int x, int y, t_game *game);
 
 //path

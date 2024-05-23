@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/22 19:15:16 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:07:42 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ int	main_raycast(t_game *game)
 	game->img.img = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, \
 	&game->img.size_l, &game->img.endian);
-	dir_player(game);
 	if (path_img(game, &game->map) == -1)
 		return (ft_error("Error. Path is not valid\n"));
 	if (init_texture(game) == -1)
 		return (-1);
 	load_texture(game);
+	dir_player(game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_loop_hook(game->mlx, &raycast, game);

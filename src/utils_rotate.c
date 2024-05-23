@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 01:27:33 by agusheredia       #+#    #+#             */
-/*   Updated: 2024/05/22 19:11:07 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:03:41 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@ static void	rotate_right(t_game *game, double rotate_speed)
 // 	double	old_plane_x;
 // 	double	cos_angle;
 // 	double	sin_angle;
-
 // 	cos_angle = cos(rote);
 // 	sin_angle = sin(rote);
 // 	old_dir_x = game->ray.dir_vector_x;
 // 	game->ray.dir_vector_x = game->ray.dir_vector_x * cos_angle - game->ray.dir_vector_y * sin_angle;
 // 	game->ray.dir_vector_y = old_dir_x * sin_angle + game->ray.dir_vector_y * cos_angle;
-
 // 	old_plane_x = game->ray.plane_x;
 // 	game->ray.plane_x = game->ray.plane_x * cos_angle - game->ray.plane_y * sin_angle;
 // 	game->ray.plane_y = old_plane_x * sin_angle + game->ray.plane_y * cos_angle;

@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/22 19:16:30 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:14:30 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ typedef struct s_player
 	double	angle; //anterior double y float era el final
 	int		up_down;
 	int		left_right;
-	int		dir_x;
-	int		dir_y;
 	int		rote;
 	double	rota_speed;
 	double	player_speed;

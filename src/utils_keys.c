@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/22 19:10:09 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:15:05 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	move_forward(t_game *game)
 	double new_x;
 	double new_y;
 
-	new_x = game->player.player_x + game->player.dir_x * MOVE_SPEED;
-	new_y = game->player.player_y + game->player.dir_y * MOVE_SPEED;
+	new_x = game->player.player_x + game->ray.dir_vector_x * MOVE_SPEED;
+	new_y = game->player.player_y + game->ray.dir_vector_y * MOVE_SPEED;
 	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
 		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
 	{
@@ -36,8 +36,8 @@ static void	move_backward(t_game *game)
 	double new_x;
 	double new_y;
 
-	new_x = game->player.player_x - game->player.dir_x * MOVE_SPEED;
-	new_y = game->player.player_y - game->player.dir_y * MOVE_SPEED;
+	new_x = game->player.player_x - game->ray.dir_vector_x * MOVE_SPEED;
+	new_y = game->player.player_y - game->ray.dir_vector_y * MOVE_SPEED;
 	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
 		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
 	{
@@ -55,8 +55,8 @@ static void	move_left(t_game *game)
 	double new_x;
 	double new_y;
 
-	new_x = game->player.player_x - game->player.dir_y * MOVE_SPEED;
-	new_y = game->player.player_y + game->player.dir_x * MOVE_SPEED;
+	new_x = game->player.player_x - game->ray.dir_vector_y * MOVE_SPEED;
+	new_y = game->player.player_y + game->ray.dir_vector_x * MOVE_SPEED;
 	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
 		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
 	{
@@ -74,8 +74,8 @@ static void	move_right(t_game *game)
 	double new_x;
 	double new_y;
 
-	new_x = game->player.player_x + game->player.dir_y * MOVE_SPEED;
-	new_y = game->player.player_y - game->player.dir_x * MOVE_SPEED;
+	new_x = game->player.player_x + game->ray.dir_vector_y * MOVE_SPEED;
+	new_y = game->player.player_y - game->ray.dir_vector_x * MOVE_SPEED;
 	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
 		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
 	{

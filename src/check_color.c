@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:51 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:46:33 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	color_to_hex(int red, int green, int blue)
 	hex_color = (red << 16) | (green << 8) | blue;
 	return (hex_color);
 }
-
 
 static void	mesure_color(t_map *map, char **floor, char **ceiling)
 {

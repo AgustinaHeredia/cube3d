@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/23 17:26:28 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 23:25:35 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	calculating_line_height(t_maths *maths, t_ray *ray)
 {
+	if (maths->perp_wall_dist <= DBL_EPSILON)
+	{
+		maths->line_height = LONG_MAX;
+		return ;
+	}
 	maths->line_height = (long)(S_HEIGHT / maths->perp_wall_dist);
 	maths->draw_start = -maths->line_height / 2 + S_HEIGHT / 2;
 	if (maths->draw_start < 0)

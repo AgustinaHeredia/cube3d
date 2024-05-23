@@ -6,7 +6,7 @@
 /*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:01:51 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/23 21:12:42 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ int	free_map(char **tab)
 
 void	error_free_exit(t_game *game, char *str)
 {
-	free(game);
-	perror(str);
+	// if (game != NULL)
+	// 	free(game);
+	(void)game;
+	ft_error(str);
+	// perror(str);
 	exit (EXIT_FAILURE);
 }
 
@@ -48,11 +51,16 @@ void	free_texture(int **texture)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
+	if (texture != NULL)
 	{
-		free(texture[i]);
-		i++;
+		i = 0;
+		while (i < 8)
+		{
+			free(texture[i]);
+			i++;
+		}
+		free(texture);
+		texture = NULL;
 	}
-	free(texture);
+
 }

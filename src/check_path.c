@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:55:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 15:34:01 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 23:13:38 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	path_mesure(t_game *game)
 	char	*temp;
 
 	i = 0;
-	while (game->map.file[i] && (ft_wordcount(game->map.file[i], ' ') == 2))
+	while (game->map.file[i])
 	{
 		temp = game->map.file[i];
 		if (!ft_strncmp(game->map.file[i], "NO ", 3))
@@ -30,9 +30,9 @@ static void	path_mesure(t_game *game)
 		if (!ft_strncmp(game->map.file[i], "EA ", 3))
 			game->map.path_ea = ft_strdup(ft_strrchr(temp, ' ') + 1);
 		if (!ft_strncmp(game->map.file[i], "F ", 2))
-			game->map.f_color = ft_strdup(ft_strrchr(temp, ' ') + 1);
+			game->map.f_color = ft_strdup(ft_strchr(temp, ' ') + 1);
 		if (!ft_strncmp(game->map.file[i], "C ", 2))
-			game->map.c_color = ft_strdup(ft_strrchr(temp, ' ') + 1);
+			game->map.c_color = ft_strdup(ft_strchr(temp, ' ') + 1);
 		i++;
 	}
 }

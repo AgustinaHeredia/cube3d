@@ -6,7 +6,7 @@
 /*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:14:58 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/23 23:23:41 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <limits.h>
 # include <time.h>
 # include <math.h>
+# include <float.h>
 
 // move keys
 # define TILE_SIZE_R 16 // era 16 antes

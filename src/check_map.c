@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 14:50:13 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:55:09 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	all_char_valid(t_map *map)
 	while (map->map_game[row])
 	{
 		col = 0;
-		while (map->map_game[row][col])
+		while (map->map_game[row][col] && map->map_game[row][col] != '\n')
 		{
 			if (map->map_game[row][col] != ' '
 				&& map->map_game[row][col] != '\t'
@@ -31,7 +31,9 @@ int	all_char_valid(t_map *map)
 				&& map->map_game[row][col] != 'E'
 				&& map->map_game[row][col] != '0'
 				&& map->map_game[row][col] != '1')
+			{
 				return (-1);
+			}
 			col++;
 		}
 		row++;
@@ -61,11 +63,11 @@ void	check_map(t_game *game)
 	if (all_char_valid(&game->map) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (check_map_resolt(&game->map, &game->player) != 0)
-		error_free_exit(game, "Error. El mapa no tiene solución.\n");
+		error_free_exit(game, "Error. The map has no solution.\n");
 	if (check_path(game) != 0)
-		error_free_exit(game, "Error. El path no es correcto\n");
+		error_free_exit(game, "Error. The path is not correct\n");
 	if (check_color(game) != 0)
-		error_free_exit(game, "Error. El color no es correcto\n");
+		error_free_exit(game, "Error. The color is not correct\n");
 	else
-		ft_printf("El mapa es correcto, seguimos\n");
+		ft_printf("The map is correct, we continue\n");
 }

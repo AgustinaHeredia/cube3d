@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 01:27:33 by agusheredia       #+#    #+#             */
-/*   Updated: 2024/05/23 14:40:25 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:47:52 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	handle_player_rotation(t_game *game)
 	double	rotate_speed;
 
 	rotate_speed = ROTATION_SPEED;
-	// if (game->player.mouse_rotate)
-	// 	rotate_speed *= 2 * game->player.rotate_speed;
 	if (game->player.rote == 1)
 		rotate_left(game, rotate_speed);
 	else if (game->player.rote == -1)

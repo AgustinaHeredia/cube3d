@@ -77,6 +77,7 @@ int	main_raycast(t_game *game)
 	dir_player(game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
+	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop_hook(game->mlx, &raycast, game);
 	mlx_loop(game->mlx);

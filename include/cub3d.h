@@ -31,6 +31,7 @@
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
+# define MOUSE_SENSITIVITY 0.005
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -239,12 +240,13 @@ void	dir_player(t_game *game);
 
 //Keys
 int		press_key(int key_code, t_game *game);
-void	rotate_player(t_game *game, int rote);
+void	rotate_player(t_game *game, double rote);
 // void	rotate_player(t_game *game, double rote);
 // void	move_player(t_game *game, double move_x, double move_y);
 int		key_release(int key_code, t_game *game);
 void	hook_player(t_game *game);
 void	handle_player_rotation(t_game *game);
+int		mouse_move(int x, int y, t_game *game);
 
 //path
 int		path_img(t_game *game, t_map *map);

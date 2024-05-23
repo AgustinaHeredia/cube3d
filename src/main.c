@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 15:36:58 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:57:42 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		return (ft_error("Error. The release could not be started MLX\n"));
-	init_raycast(&game); // raycast
+	main_raycast(&game); // raycast
 	// init_window(game);
-	// cleaning_all(game);
+	exit_game(&game);
 	return (0);
 }

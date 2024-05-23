@@ -3,97 +3,121 @@
 /*                                                        :::      ::::::::   */
 /*   utils_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/17 16:29:55 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/22 19:10:09 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	rotate_player(t_game *game, int rote)
+static void	move_forward(t_game *game)
 {
-	if (rote == 1)
-	{
-		game->player.angle += ROTATION_SPEED;
-		if (game->player.angle > (2 * M_PI))
-			// game->player.angle -= 2 * M_PI;
-			game->player.angle -= 90;
-	}
-	else
-	{
-		game->player.angle -= ROTATION_SPEED;
-		if (game->player.angle > (2 * M_PI))
-			game->player.angle += 90;
-			// game->player.angle += 2 * M_PI;
-	}
-}
+	double new_x;
+	double new_y;
 
-void	move_player(t_game *game, double move_x, double move_y)
-{
-	int	map_grid_y;
-	int	map_grid_x;
-	int	new_x;
-	int	new_y;
-
-	new_x = roundf(game->player.player_x + move_x);
-	new_y = roundf(game->player.player_y + move_y);
-	map_grid_x = (new_x / TILE_SIZE_R);
-	map_grid_y = (new_y / TILE_SIZE_R);
-	if (game->map.map_game[map_grid_y][map_grid_x] != '1' && \
-	(game->map.map_game[map_grid_y][game->player.player_x / TILE_SIZE_R] \
-	!= '1' && \
-	game->map.map_game[game->player.player_y / TILE_SIZE_R][map_grid_x] \
-	!= '1'))
+	new_x = game->player.player_x + game->player.dir_x * MOVE_SPEED;
+	new_y = game->player.player_y + game->player.dir_y * MOVE_SPEED;
+	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
 	{
 		game->player.player_x = new_x;
+	}
+	if (game->map.map_game[(int)(game->player.player_x + MARGIN)][(int)(new_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(game->player.player_x - MARGIN)][(int)(new_y - MARGIN)] != '1')
+	{
 		game->player.player_y = new_y;
 	}
 }
 
-int	key_release(t_keydata keydata, t_game *game)
+static void	move_backward(t_game *game)
 {
-	if (keydata.key == KEY_W && keydata.action == KEY_RELEASE)
-		game->player.up_down = 0;
-	else if (keydata.key == KEY_A && keydata.action == KEY_RELEASE)
-		game->player.left_right = 0;
-	else if (keydata.key == KEY_S && keydata.action == KEY_RELEASE)
-		game->player.up_down = 0;
-	else if (keydata.key == KEY_D && keydata.action == KEY_RELEASE)
-		game->player.left_right = 0;
-	else if (keydata.key == KEY_LEFT && keydata.action == KEY_RELEASE)
-		game->player.rote = 0;
-	else if (keydata.key == KEY_RIGHT && keydata.action == KEY_RELEASE)
-		game->player.rote = 0;
-	return (0);
+	double new_x;
+	double new_y;
+
+	new_x = game->player.player_x - game->player.dir_x * MOVE_SPEED;
+	new_y = game->player.player_y - game->player.dir_y * MOVE_SPEED;
+	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
+	{
+		game->player.player_x = new_x;
+	}
+	if (game->map.map_game[(int)(game->player.player_x + MARGIN)][(int)(new_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(game->player.player_x - MARGIN)][(int)(new_y - MARGIN)] != '1')
+	{
+		game->player.player_y = new_y;
+	}
 }
 
-void	hook_player(t_game *game, double move_x, double move_y)
+static void	move_left(t_game *game)
+{
+	double new_x;
+	double new_y;
+
+	new_x = game->player.player_x - game->player.dir_y * MOVE_SPEED;
+	new_y = game->player.player_y + game->player.dir_x * MOVE_SPEED;
+	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
+	{
+		game->player.player_x = new_x;
+	}
+	if (game->map.map_game[(int)(game->player.player_x + MARGIN)][(int)(new_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(game->player.player_x - MARGIN)][(int)(new_y - MARGIN)] != '1')
+	{
+		game->player.player_y = new_y;
+	}
+}
+
+static void	move_right(t_game *game)
+{
+	double new_x;
+	double new_y;
+
+	new_x = game->player.player_x + game->player.dir_y * MOVE_SPEED;
+	new_y = game->player.player_y - game->player.dir_x * MOVE_SPEED;
+	if (game->map.map_game[(int)(new_x + MARGIN)][(int)(game->player.player_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(new_x - MARGIN)][(int)(game->player.player_y - MARGIN)] != '1')
+	{
+		game->player.player_x = new_x;
+	}
+	if (game->map.map_game[(int)(game->player.player_x + MARGIN)][(int)(new_y + MARGIN)] != '1' &&
+		game->map.map_game[(int)(game->player.player_x - MARGIN)][(int)(new_y - MARGIN)] != '1')
+	{
+		game->player.player_y = new_y;
+	}
+}
+
+void hook_player(t_game *game)
 {
 	if (game->player.rote == 1)
-		rotate_player(game, 1);
+	{
+        printf("PRESS Right\n");
+		handle_player_rotation(game);
+	}
 	else if (game->player.rote == -1)
-		rotate_player(game, 0);
-	if (game->player.up_down == 1)
 	{
-		move_x = sin(game->player.angle) * PLAYER_SPEED;
-		move_y = cos(game->player.angle) * PLAYER_SPEED;
+        printf("PRESS Left\n");
+		handle_player_rotation(game);
 	}
-	if (game->player.up_down == -1)
+	else if (game->player.up_down == 1)
 	{
-		move_x = -sin(game->player.angle) * PLAYER_SPEED;
-		move_y = -cos(game->player.angle) * PLAYER_SPEED;
+        printf("PRESS W\n");
+		move_forward(game);
 	}
-	if (game->player.left_right == 1)
+	else if (game->player.up_down == -1)
 	{
-		move_x = -sin(game->player.angle) * PLAYER_SPEED;
-		move_y = cos(game->player.angle) * PLAYER_SPEED;
+        printf("PRESS S\n");
+		move_backward(game);
 	}
-	if (game->player.left_right == -1)
+	else if (game->player.left_right == 1)
 	{
-		move_x = sin(game->player.angle) * PLAYER_SPEED;
-		move_y = -cos(game->player.angle) * PLAYER_SPEED;
+        printf("PRESS D\n");
+		move_right(game);
 	}
-	move_player(game, move_x, move_y);
+	else if (game->player.left_right == -1)
+	{
+        printf("PRESS A\n");
+		move_left(game);
+	}
 }

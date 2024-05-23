@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
+#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/16 16:06:45 by pquintan         ###   ########.fr        #
+#    Updated: 2024/05/22 01:28:16 by agusheredia      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,15 @@ SRC = src/main.c \
 		src/check_path.c \
 		src/check_color.c \
 		src/paint_map2d.c \
-		src/raycast.c \
 		src/utils_keys.c \
 		src/path_utils.c \
-		src/utils_player.c 
+		src/utils_player.c \
+		src/raycast.c \
+		src/init_raycast.c \
+		src/raycast_utils.c \
+		src/texture_utils.c \
+		src/utils_rotate.c \
+		
 
 CC = gcc
 MLX_PATH = mlx/

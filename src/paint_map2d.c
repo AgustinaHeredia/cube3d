@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:13:35 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:21:27 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:45:42 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,43 @@ void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-void	draw_square(t_pixel *data, int x, int y, int color)
+void	draw_square(t_pixel *data, int x, int y, int size, int color)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < 20)
+	while (i < size)
 	{
 		j = 0;
-		while (j < 20)
+		while (j < size)
 		{
-			my_mlx_pixel_put(data, x + i, y + j, color);
+			if (i == 0 || i == size - 1 || j == 0 || j == size -1)
+				my_mlx_pixel_put(data, x + i, y + j, 0x595A5D);
+			else
+				my_mlx_pixel_put(data, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	draw_player(t_pixel *data, t_game *game, int cell_size)
+{
+	int	i;
+	int	j;
+	int	player_size;
+
+	player_size = cell_size / 3;
+	i = 0;
+	while (i < player_size)
+	{
+		j = 0;
+		while (j < player_size)
+		{
+			my_mlx_pixel_put(data, 10 + game->ray.p_pos_y * cell_size + i, \
+			10 + game->ray.p_pos_x * cell_size + j, 0x2ECC71);
+			// draw_direction_line(data, game, cell_size);
 			j++;
 		}
 		i++;
@@ -45,26 +70,25 @@ void	draw_map_2d(t_game *game, t_map *map)
 	t_pixel	img;
 
 	(void)game;
-	y = -1;
-	img.img = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
+	x = 0;
+	img.img = mlx_new_image(game->mlx, map->width * 15, map->height * 15);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	while (++y < map->height)
+	while (x < map->height)
 	{
-		x = -1;
-		while (++x < map->width)
+		y = 0;
+		while (y < map->width)
 		{
-			if (map->map_game[y][x] == '1')
-				draw_square(&img, 10 + x * 20, 10 + y * 20, map->floor);
-			else if (map->map_game[y][x] == ' ')
-				draw_square(&img, 10 + x * 20, 10 + y * 20, 0xFFFFFF);
+			if (map->map_game[x][y] && map->map_game[x][y] == '1')
+				draw_square(&img, y * 15, x * 15, 15, 0xC0E3DC);
+			else if (map->map_game[x][y] == ' ')
+				draw_square(&img, y * 15, x * 15, 15, 0xFFFFFF);
 			else
-				draw_square(&img, 10 + x * 20, 10 + y * 20, map->ceiling);
+				draw_square(&img, y * 15, x * 15, 15, 0x5D0D71);
+			y++;
 		}
+		draw_player(&img, game, 15);
+		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, img.img, 0, 0);
 }
-
-		// else if (map->map_game[y][x] == 'N' || map->map_game[y][x] == 'S'
-		// 	|| map->map_game[y][x] == 'W' || map->map_game[y][x] == 'E')
-		// 	draw_square(&img, 10 + x * 20, 10 + y * 20, 0x0000FF);

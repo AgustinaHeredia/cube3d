@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:06:22 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:22:00 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	initialize_player(t_game *game)
 	game->player.player_y = 0; // init_y
 	game->player.up_down = 0;
 	game->player.left_right = 0;
-	game->player.move_x = 0;
-	game->player.move_y = 0;
+	game->player.dir_x = 0;
+	game->player.dir_y = 0;
 	game->player.rote = 0;
 	game->player.angle = 0;
 }
@@ -94,4 +94,6 @@ void	init_game(t_game *game)
 	game->path_s = NULL;
 	game->path_w = NULL;
 	game->path_e = NULL;
+	game->ray.plane_x = 0; // set first time only
+	game->ray.plane_y = 0.66; // set first time only
 }

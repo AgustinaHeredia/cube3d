@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:15:17 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:57:55 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	exit_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	free_map(game->map.map_game);
 	free_map(game->map.file);
+	free(game->maths.side_texture);
 	ft_printf("Ooohhh... you're out of the game\n");
 	exit(0);
 }

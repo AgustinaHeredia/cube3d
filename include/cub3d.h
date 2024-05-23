@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/17 16:31:09 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/22 19:16:30 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <math.h>
 
 // move keys
-# define TILE_SIZE_R 16
+# define TILE_SIZE_R 16 // era 16 antes
 # define FOV 60
-# define ROTATION_SPEED 0.045
+# define MOVE_SPEED 0.1
+# define ROTATION_SPEED 0.030
 # define PLAYER_SPEED 2 // 4 esta bien tambien
-
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
@@ -50,6 +50,7 @@
 # define TEX_H 32
 # define X 0
 # define Y 1
+# define MARGIN 0.1
 
 //raycast
 typedef struct  s_img
@@ -74,25 +75,21 @@ typedef struct s_pixel
 	int		endian;
 }	t_pixel;
 
-typedef struct s_keydata
-{
-	int		key;
-	int		action;
-}	t_keydata;
-
 typedef struct s_player
 {
 	int		init_x; // creo que se podran borrar porque actualizo en el movimiento de las keys
 	int		init_y; // creo que se podran borrar porque actualizo en el movimiento de las keys
-	int		player_x;
-	int		player_y;
+	double	player_x;
+	double	player_y;
 	char	init_pos; // N, S, W, E
-	float	angle; //anterior double
+	double	angle; //anterior double y float era el final
 	int		up_down;
 	int		left_right;
-	int		move_x;
-	int		move_y;
+	int		dir_x;
+	int		dir_y;
 	int		rote;
+	double	rota_speed;
+	double	player_speed;
 }	t_player;
 
 typedef struct s_map
@@ -143,11 +140,10 @@ typedef struct s_maths
 
 	int	step_x;
 	int step_y;
-	int hit;
 	int side;
 	int	*side_texture;
 
-	long line_height;
+	long	line_height;
 
 	int draw_start;
 	int draw_end;
@@ -173,6 +169,7 @@ typedef struct s_game
 	t_img		img;
 	void		*mlx;
 	void		*win;
+	void		*imag;
 	void		*path_n;
 	void		*path_s;
 	void		*path_w;
@@ -212,22 +209,23 @@ void	map_mesures(t_map *map);
 void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
-void	draw_square(t_pixel *data, int x, int y, int color);
+void	draw_square(t_pixel *data, int x, int y, int size, int color);
 void	mesure_player(t_player *player, char view);
+void	player_mesure(t_game *game);
 
 //utils debug
 void	print_array(char **array);
 
 // raycast
-int		init_raycast(t_game *game);
+int		main_raycast(t_game *game);
 int		init_texture(t_game *game);
 void	init_ray(t_game *game);
 int		raycast(t_game *game);
 int		maths_need(t_game *game, char **map);
 void	init_var(t_maths *maths);
-void	draw(t_game *game, t_maths *maths, t_ray *ray, int x, char **map);
-int		get_texture(t_game *game, t_maths *maths);
-void	calculating_line_height(t_maths *maths, t_ray *ray, char **map);
+void	prepare_draw_game (t_game *game, t_maths *maths, t_ray *ray, int x);
+int		get_texture(t_maths *maths);
+void	calculating_line_height(t_maths *maths, t_ray *ray);
 void	perp_dist(t_maths *maths, t_ray *ray);
 void	hit(t_maths *maths, char **map);
 void	step_side_dist(t_game *game, t_maths *maths);
@@ -242,11 +240,13 @@ void	angle_player(t_game *game); //cambio por mesures_player
 void	dir_player(t_game *game);
 
 //Keys
-int		press_key(t_keydata keydata, t_game *game);
+int		press_key(int key_code, t_game *game);
 void	rotate_player(t_game *game, int rote);
-void	move_player(t_game *game, double move_x, double move_y);
-int		key_release(t_keydata keydata, t_game *game);
-void	hook_player(t_game *game, double move_x, double move_y);
+// void	rotate_player(t_game *game, double rote);
+// void	move_player(t_game *game, double move_x, double move_y);
+int		key_release(int key_code, t_game *game);
+void	hook_player(t_game *game);
+void 	handle_player_rotation(t_game *game);
 
 //path
 int		path_img(t_game *game, t_map *map);

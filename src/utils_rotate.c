@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 01:27:33 by agusheredia       #+#    #+#             */
-/*   Updated: 2024/05/23 14:53:44 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:03:42 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	rotate_player(t_game *game, double rotate_speed)
 
 int	mouse_move(int x, int y, t_game *game)
 {
-
 	static int	prev_x = -1;
 	int			delta_x;
 	double		rotate_speed;

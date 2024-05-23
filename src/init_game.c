@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 12:14:25 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:21:13 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ void	read_file(int fd, t_game *game)
 	strbigline = ft_strdup("");
 	while (line != NULL)
 	{
-		temp = strbigline;
-		strbigline = ft_strjoin(strbigline, line);
+		temp = ft_strdup(strbigline);
+		free(strbigline);
+		strbigline = ft_strjoin(temp, line);
 		free(temp);
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	game->map.file = ft_split(strbigline, '\n');
 	free(strbigline);
@@ -83,6 +85,9 @@ void	read_file(int fd, t_game *game)
 
 void	init_game(t_game *game)
 {
+	game->maths.side_texture = malloc(sizeof(int) * 3);
+	if (!game->maths.side_texture)
+		return ;
 	init_map(game);
 	initialize_player(game);
 	game->mlx = NULL;

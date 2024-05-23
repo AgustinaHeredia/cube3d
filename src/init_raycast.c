@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/22 19:21:01 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:55:32 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	init_var(t_maths *maths)
-{
-	maths->side_texture = malloc(sizeof(int) * 3);
-	if (!maths->side_texture)
-		return ;
-}
 
 int	maths_need(t_game *game, char** map)
 {
@@ -26,7 +19,6 @@ int	maths_need(t_game *game, char** map)
 	x = 0;
 	while (x < S_WIDTH)
 	{
-		init_var(&game->maths);
 		init_maths(&game->maths, &game->ray, x);
 		step_side_dist(game, &game->maths);
 		hit(&game->maths, map);

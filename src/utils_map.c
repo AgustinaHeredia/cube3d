@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/22 17:28:57 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:15:07 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	create_map(t_map *map)
 {
 	int		i;
 	char	*temp;
+	char	*temp1;
 
 	i = 0;
 	temp = ft_strdup("");
@@ -45,8 +46,10 @@ void	create_map(t_map *map)
 			&& ft_strncmp(map->file[i], "F", 1)
 			&& ft_strncmp(map->file[i], "C", 1))
 		{
-			temp = ft_strjoin(temp, "\n");
-			temp = ft_strjoin(temp, map->file[i]);
+			temp1 = ft_strjoin(temp, "\n");
+			free(temp);
+			temp = ft_strjoin(temp1, map->file[i]);
+			free(temp1);
 		}
 		i++;
 	}

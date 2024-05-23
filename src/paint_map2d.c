@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:13:35 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/22 14:45:42 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:34:30 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static void	draw_player(t_pixel *data, t_game *game, int cell_size)
 		j = 0;
 		while (j < player_size)
 		{
-			my_mlx_pixel_put(data, 10 + game->ray.p_pos_y * cell_size + i, \
-			10 + game->ray.p_pos_x * cell_size + j, 0x2ECC71);
+			my_mlx_pixel_put(data,(game->ray.p_pos_y - 0.2) * cell_size + i, \
+			(game->ray.p_pos_x - 0.2) * cell_size + j, 0x2ECC71);
 			// draw_direction_line(data, game, cell_size);
 			j++;
 		}

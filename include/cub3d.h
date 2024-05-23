@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 12:14:30 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:41:01 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 // move keys
 # define TILE_SIZE_R 16 // era 16 antes
 # define FOV 60
-# define MOVE_SPEED 0.1
-# define ROTATION_SPEED 0.030
+# define MOVE_SPEED 0.07
+# define ROTATION_SPEED 0.025
 # define PLAYER_SPEED 2 // 4 esta bien tambien
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -200,6 +200,7 @@ void	error_free_exit(t_game *game, char *str);
 //exit
 int		exit_game(t_game *game);
 int		free_map(char **tab);
+void	free_texture(int **texture);
 
 //utils
 char	*ft_spalloc(size_t count);
@@ -220,7 +221,6 @@ int		init_texture(t_game *game);
 void	init_ray(t_game *game);
 int		raycast(t_game *game);
 int		maths_need(t_game *game, char **map);
-void	init_var(t_maths *maths);
 void	prepare_draw_game (t_game *game, t_maths *maths, t_ray *ray, int x);
 int		get_texture(t_maths *maths);
 void	calculating_line_height(t_maths *maths, t_ray *ray);

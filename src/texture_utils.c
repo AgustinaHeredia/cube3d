@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/22 17:52:48 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:09:47 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	load_image(t_game *game, int *texture, char *path, t_img *img)
 	int	x;
 	int	y;
 
-	img->img = mlx_xpm_file_to_image(game->mlx, path, &img->img_width, &img->img_height);
-	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
-
+	img->img = mlx_xpm_file_to_image(game->mlx, path, &img->img_width, \
+	&img->img_height);
+	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, \
+	&img->endian);
 	y = 0;
 	while (y < img->img_height)
 	{
@@ -31,12 +32,12 @@ void	load_image(t_game *game, int *texture, char *path, t_img *img)
 		}
 		y++;
 	}
-	// mlx_destroy_image(game->mlx, img->img); // creo que es necesario pero aqui me da problemas
 }
 
 void	load_texture(t_game *game)
 {
-	t_img   img;
+	t_img	img;
+
 	load_image(game, game->texture[0], game->map.path_no, &img);
 	load_image(game, game->texture[1], game->map.path_so, &img);
 	load_image(game, game->texture[2], game->map.path_we, &img);
@@ -45,13 +46,14 @@ void	load_texture(t_game *game)
 
 void	image_put(t_game *game)
 {
-	int x = 0;
-	int y = 0;
+	int	x;
+	int	y;
 
-	while(y < S_HEIGHT)
+	y = 0;
+	while (y < S_HEIGHT)
 	{
 		x = 0;
-		while(x < S_WIDTH)
+		while (x < S_WIDTH)
 		{
 			game->img.data[S_WIDTH * y + x] = game->buf[y][x];
 			x++;
@@ -85,13 +87,12 @@ int	get_texture(t_maths *maths)
 	if (maths->side_texture[X] == 0)
 	{
 		if (maths->side_texture[Y] == 1)
-			return(2);
+			return (2);
 		else
-			return(3);
+			return (3);
 	}
-	if (maths->side_texture[X] == 1) // estas dos lineas no se diferencian por alguna razon
-		return(0);
+	if (maths->side_texture[X] == 1)
+		return (0);
 	else
-		return(1);
+		return (1);
 }
-// por algun motivo los numeros no corresponden a las texturas, ahora si?

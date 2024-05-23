@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 14:50:13 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:17:02 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,4 @@ void	check_map(t_game *game)
 		error_free_exit(game, "Error. El path no es correcto\n");
 	if (check_color(game) != 0)
 		error_free_exit(game, "Error. El color no es correcto\n");
-	else
-		ft_printf("El mapa es correcto, seguimos\n");
 }

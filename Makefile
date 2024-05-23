@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
+#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/23 17:00:05 by pquintan         ###   ########.fr        #
+#    Updated: 2024/05/23 17:18:21 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC = src/main.c \
 		src/exit.c \
 		src/check_map.c \
 		src/check_resolt.c \
-		src/utils_debug.c \
 		src/utils_map.c \
 		src/check_path.c \
 		src/check_color.c \

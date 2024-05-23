@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 14:38:21 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:36:26 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ int		init_texture(t_game *game);
 void	init_ray(t_game *game);
 int		raycast(t_game *game);
 int		maths_need(t_game *game, char **map);
-void	prepare_draw_game (t_game *game, t_maths *maths, t_ray *ray, int x);
+void	prepare_draw_game(t_game *game, t_maths *maths, t_ray *ray, int x);
 int		get_texture(t_maths *maths);
 void	calculating_line_height(t_maths *maths, t_ray *ray);
 void	perp_dist(t_maths *maths, t_ray *ray);

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 13:15:07 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:09:37 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ size_t	ft_wordcount(char *s, char sep)
 	}
 	return (count);
 }
+
 void	angle_player(t_game *game)
 {
 	if (game->player.init_pos == 'N')
@@ -93,12 +94,12 @@ void	angle_player(t_game *game)
 
 void	dir_player(t_game *game)
 {
-	if (game->player.init_pos == 'N') // este caso esta bien
+	if (game->player.init_pos == 'N')
 	{
 		game->ray.dir_vector_x = -1;
 		game->ray.dir_vector_y = 0;
 	}
-	else if (game->player.init_pos == 'S') // este caso esta bien
+	else if (game->player.init_pos == 'S')
 	{
 		game->ray.dir_vector_x = 1;
 		game->ray.dir_vector_y = 0;
@@ -113,4 +114,4 @@ void	dir_player(t_game *game)
 		game->ray.dir_vector_x = 0;
 		game->ray.dir_vector_y = -1;
 	}
-} // el eje X apunta hacia la derecha y el eje Y apunta hacia arriba.
+}

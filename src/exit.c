@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 12:53:06 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:17:23 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	exit_game(t_game *game)
 	free_map(game->map.file);
 	free(game->maths.side_texture);
 	free_texture(game->texture);
-	ft_printf("Ooohhh... you're out of the game\n");
+	ft_printf("Ooohhh... you're exit the game\n");
 	exit(0);
 }
 
@@ -39,7 +39,6 @@ int	free_map(char **tab)
 
 void	error_free_exit(t_game *game, char *str)
 {
-	// free_map(game->map);
 	free(game);
 	perror(str);
 	exit (EXIT_FAILURE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:32:23 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/22 15:11:29 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:17:06 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	press_key(int key_code, t_game *game)
 
 int	key_release(int key_code, t_game *game)
 {
-	printf("RELEASE\n");
 	if (key_code == KEY_W)
 		game->player.up_down = 0;
 	else if (key_code == KEY_A)
@@ -48,4 +47,3 @@ int	key_release(int key_code, t_game *game)
 		game->player.rote = 0;
 	return (0);
 }
-

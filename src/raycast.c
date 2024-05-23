@@ -6,47 +6,40 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/23 15:06:43 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:47:35 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void calculating_line_height(t_maths *maths, t_ray *ray)
+void	calculating_line_height(t_maths *maths, t_ray *ray)
 {
-	// calculate height of line to draw on screen
-	maths->line_height = (long)(S_HEIGHT / maths->perp_wall_dist); // sometimes gives problems
-
-	// calculate lowest and highest pixel to fill in current stripe
+	maths->line_height = (long)(S_HEIGHT / maths->perp_wall_dist);
 	maths->draw_start = -maths->line_height / 2 + S_HEIGHT / 2;
 	if (maths->draw_start < 0)
 		maths->draw_start = 0;
-	
-	// calculate highest pixel to fill in current stripe
 	maths->draw_end = maths->line_height / 2 + S_HEIGHT / 2;
 	if (maths->draw_end >= S_HEIGHT)
 		maths->draw_end = S_HEIGHT - 1;
-
 	if (maths->side == 0)
 		maths->wall_x = ray->p_pos_y + maths->perp_wall_dist * maths->ray_dir_y;
 	else
 		maths->wall_x = ray->p_pos_x + maths->perp_wall_dist * maths->ray_dir_x;
-	maths->wall_x -= floor(maths->wall_x); // truncates the decimal part
-	// 90 180 270 360
+	maths->wall_x -= floor(maths->wall_x);
 }
 
-void	prepare_draw_game (t_game *game, t_maths *maths, t_ray *ray, int x)
+void	prepare_draw_game(t_game *game, t_maths *maths, t_ray *ray, int x)
 {
+	int	y;
+	int	texture;
+	int	px;
+
 	calculating_line_height(maths, ray);
-
 	maths->tex_x = (int)(maths->wall_x * (double)TEX_W);
-
 	maths->step = 1.0 * TEX_H / maths->line_height;
-	maths->tex_pos = (maths->draw_start - S_HEIGHT / 2 + maths->line_height / 2) * maths->step;
-
-	int y = maths->draw_start;
-	int texture;
-	int px;
+	maths->tex_pos = (maths->draw_start - S_HEIGHT / 2 + \
+	maths->line_height / 2) * maths->step;
+	y = maths->draw_start;
 	while (y < maths->draw_end)
 	{
 		maths->tex_y = (int)maths->tex_pos & (TEX_H - 1);
@@ -90,4 +83,3 @@ int	main_raycast(t_game *game)
 	mlx_loop(game->mlx);
 	return (0);
 }
-

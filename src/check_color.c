@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:51 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:57:52 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	color_to_hex(int red, int green, int blue)
 	hex_color = (red << 16) | (green << 8) | blue;
 	return (hex_color);
 }
-
 
 static void	mesure_color(t_map *map, char **floor, char **ceiling)
 {
@@ -39,7 +38,7 @@ int	check_color(t_game *game)
 	count_f = ft_wordcount(game->map.f_color, ',');
 	count_c = ft_wordcount(game->map.c_color, ',');
 	if (count_f != 3 && count_c != 3)
-		return (-1);	
+		return (-1);
 	floor = ft_split(game->map.f_color, ',');
 	ceiling = ft_split(game->map.c_color, ',');
 	if (ft_atoi(floor[0]) < 0 || ft_atoi(floor[0]) > 255

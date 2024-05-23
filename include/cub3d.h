@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 14:38:21 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:32:09 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define MARGIN 0.1
 
 //raycast
-typedef struct  s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*data;
@@ -78,8 +78,8 @@ typedef struct s_pixel
 
 typedef struct s_player
 {
-	int		init_x; // creo que se podran borrar porque actualizo en el movimiento de las keys
-	int		init_y; // creo que se podran borrar porque actualizo en el movimiento de las keys
+	int		init_x;
+	int		init_y;
 	double	player_x;
 	double	player_y;
 	char	init_pos; // N, S, W, E
@@ -121,41 +121,41 @@ typedef struct s_ray
 
 typedef struct s_maths
 {
-	double camera_x;
+	double	camera_x;
 
-	double ray_dir_x;
-	double ray_dir_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
 
-	int map_x;
-	int map_y;
+	int		map_x;
+	int		map_y;
 
-	double side_dist_x;
-	double side_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
 
-	double delta_dist_x;
-	double delta_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
 
-	double perp_wall_dist;
+	double	perp_wall_dist;
 
-	int	step_x;
-	int step_y;
-	int side;
-	int	*side_texture;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		*side_texture;
 
 	long	line_height;
 
-	int draw_start;
-	int draw_end;
+	int		draw_start;
+	int		draw_end;
 
-	int tex_num; // texture number
+	int		tex_num;
 
-	double wall_x;
+	double	wall_x;
 
-	int tex_x;
-	int tex_y;
-	
-	double step;
-	double tex_pos;
+	int		tex_x;
+	int		tex_y;
+
+	double	step;
+	double	tex_pos;
 
 }	t_maths;
 
@@ -209,7 +209,7 @@ void	map_mesures(t_map *map);
 void	create_map(t_map *map);
 size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
-void	draw_square(t_pixel *data, int x, int y, int size, int color);
+void	draw_square(t_pixel *data, int x, int y, int color);
 void	mesure_player(t_player *player, char view);
 void	player_mesure(t_game *game);
 
@@ -222,10 +222,10 @@ int		init_texture(t_game *game);
 void	init_ray(t_game *game);
 int		raycast(t_game *game);
 int		maths_need(t_game *game, char **map);
-void	prepare_draw_game (t_game *game, t_maths *maths, t_ray *ray, int x);
+void	prepare_draw_game(t_game *game, t_maths *maths, t_ray *ray, int x);
 int		get_texture(t_maths *maths);
 void	calculating_line_height(t_maths *maths, t_ray *ray);
-void	perp_dist(t_maths *maths, t_ray *ray);
+void	perp_dist(t_maths *maths);
 void	hit(t_maths *maths, char **map);
 void	step_side_dist(t_game *game, t_maths *maths);
 
@@ -245,7 +245,7 @@ void	rotate_player(t_game *game, double rote);
 // void	move_player(t_game *game, double move_x, double move_y);
 int		key_release(int key_code, t_game *game);
 void	hook_player(t_game *game);
-void 	handle_player_rotation(t_game *game);
+void	handle_player_rotation(t_game *game);
 int		mouse_move(int x, int y, t_game *game);
 
 //path

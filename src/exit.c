@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 21:12:42 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/24 10:03:36 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,8 @@ int	free_map(char **tab)
 
 void	error_free_exit(t_game *game, char *str)
 {
-	// if (game != NULL)
-	// 	free(game);
 	(void)game;
 	ft_error(str);
-	// perror(str);
 	exit (EXIT_FAILURE);
 }
 
@@ -62,5 +59,4 @@ void	free_texture(int **texture)
 		free(texture);
 		texture = NULL;
 	}
-
 }

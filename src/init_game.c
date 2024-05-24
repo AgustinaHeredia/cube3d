@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:57:05 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/24 10:58:31 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	space_map(t_map *map)
 		}
 		i++;
 	}
+	map->map_game[i] = NULL;
 }
 
 void	read_file(int fd, t_game *game)
@@ -96,6 +97,4 @@ void	init_game(t_game *game)
 	game->path_s = NULL;
 	game->path_w = NULL;
 	game->path_e = NULL;
-	game->ray.plane_x = 0;
-	game->ray.plane_y = 0.66;
 }

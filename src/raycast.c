@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/23 23:25:35 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/24 10:27:17 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	calculating_line_height(t_maths *maths, t_ray *ray)
 {
-	if (maths->perp_wall_dist <= DBL_EPSILON)
-	{
-		maths->line_height = LONG_MAX;
-		return ;
-	}
 	maths->line_height = (long)(S_HEIGHT / maths->perp_wall_dist);
 	maths->draw_start = -maths->line_height / 2 + S_HEIGHT / 2;
 	if (maths->draw_start < 0)
@@ -80,6 +75,7 @@ int	main_raycast(t_game *game)
 		return (-1);
 	load_texture(game);
 	dir_player(game);
+	start_plane(game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);

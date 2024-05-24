@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 17:09:37 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:50:31 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,28 @@ void	create_map(t_map *map)
 	free(temp);
 }
 
-size_t	ft_wordcount(char *s, char sep)
+void	start_plane(t_game *game)
 {
-	size_t	count;
-	size_t	i;
-	int		separator_found;
-
-	i = 0;
-	count = 0;
-	separator_found = 1;
-	while (s[i] != '\0')
+	if (game->player.init_pos == 'N')
 	{
-		if (s[i] == sep)
-			separator_found = 1;
-		else if (separator_found == 1)
-		{
-			count++;
-			separator_found = 0;
-		}
-		i++;
+		game->ray.plane_x = 0;
+		game->ray.plane_y = 0.66;
 	}
-	return (count);
+	else if (game->player.init_pos == 'S')
+	{
+		game->ray.plane_x = 0;
+		game->ray.plane_y = -0.66;
+	}
+	else if (game->player.init_pos == 'W')
+	{
+		game->ray.plane_x = -0.66;
+		game->ray.plane_y = 0;
+	}
+	else if (game->player.init_pos == 'E')
+	{
+		game->ray.plane_x = 0.66;
+		game->ray.plane_y = 0;
+	}
 }
 
 void	angle_player(t_game *game)

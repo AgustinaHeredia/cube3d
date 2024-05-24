@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 10:03:36 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:27:45 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	exit_game(t_game *game)
 	free_map(game->map.file);
 	free(game->maths.side_texture);
 	free_texture(game->texture);
-	ft_printf("Ooohhh... you're out of the game\n");
 	exit(0);
+	ft_printf("Ooohhh... you're out of the game\n");
 }
 
 int	free_map(char **tab)
@@ -51,7 +51,7 @@ void	free_texture(int **texture)
 	if (texture != NULL)
 	{
 		i = 0;
-		while (i < 8)
+		while (i < 9)
 		{
 			free(texture[i]);
 			i++;

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 10:58:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 11:44:09 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	space_map(t_map *map)
 {
 	int		i;
 	char	*temp;
+	char	*temp2;
 	int		len;
 
 	map_mesures(map);
@@ -51,12 +52,14 @@ static void	space_map(t_map *map)
 		if (len < map->width)
 		{
 			temp = ft_spalloc(map->width - len);
-			map->map_game[i] = ft_strjoin(map->map_game[i], temp);
+			temp2 = ft_strdup(map->map_game[i]);
+			free(map->map_game[i]);
+			map->map_game[i] = ft_strjoin(temp2, temp);
 			free(temp);
+			free(temp2);
 		}
 		i++;
 	}
-	map->map_game[i] = NULL;
 }
 
 void	read_file(int fd, t_game *game)

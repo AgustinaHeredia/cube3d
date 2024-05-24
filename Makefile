@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
+#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/23 21:14:58 by agusheredia      ###   ########.fr        #
+#    Updated: 2024/05/24 09:37:11 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-FLAGS = -Wall -Werror -Wextra -g -fsanitize='address,undefined'
+FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
 SRC = src/main.c \
 		src/check_arg.c \
 		src/error.c \

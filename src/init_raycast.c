@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/23 17:52:31 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:34:55 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	maths_need(t_game *game, char **map)
 
 void	init_ray(t_game *game)
 {
-	game->ray.p_pos_x = game->player.player_x;
-	game->ray.p_pos_y = game->player.player_y;
+	game->ray.p_pos_x = game->player.player_x + 0.3;
+	game->ray.p_pos_y = game->player.player_y + 0.3;
 	game->ray.move_speed = 0.05;
 	game->ray.rot_speed = 0.05;
 }

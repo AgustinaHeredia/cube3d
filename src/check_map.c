@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 10:37:12 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:38:59 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,4 @@ void	check_map(t_game *game)
 		error_free_exit(game, "Error. The path is not correct\n");
 	if (check_color(game) != 0)
 		error_free_exit(game, "Error. The color is not correct\n");
-	else
-		ft_printf("The map is correct, we continue\n");
 }

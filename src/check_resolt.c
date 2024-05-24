@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_resolt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 10:50:30 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:47:54 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	**create_copy_map(char **map, int height)
 
 	temp = (char **)malloc((height + 1) * sizeof(char *));
 	if (!temp)
-		ft_error("Error. No se ha podido asignar memoria al map Temp\n");
+		ft_error("Error. Couldn't assign memory to the map\n");
 	i = 0;
 	while (i < height)
 	{
@@ -42,7 +42,7 @@ static char	**create_copy_map(char **map, int height)
 		if (!temp[i])
 		{
 			free_map(temp);
-			ft_error("Error. No se ha podido asignar memoria en mapTemp\n");
+			ft_error("Error. Couldn't assign memory to the map\n");
 		}
 		i++;
 	}

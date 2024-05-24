@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:19:18 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/02 14:11:52 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:37:10 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 int	ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\n", 2);
 	return (1);
 }

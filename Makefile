@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/24 11:18:34 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/24 12:37:50 by pquintan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

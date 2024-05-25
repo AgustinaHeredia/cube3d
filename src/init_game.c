@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 11:44:09 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:26:26 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	read_file(int fd, t_game *game)
 	close(fd);
 	game->map.file = ft_split(strbigline, '\n');
 	free(strbigline);
+	check_map_position(&game->map);
 	create_map(&game->map);
 	space_map(&game->map);
 }

@@ -6,11 +6,34 @@
 /*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/23 23:14:10 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/25 19:51:16 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static int	ft_strnumspace(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+static int	color_number(char **floor, char **ceiling)
+{
+	if (ft_strnumspace(floor[0]) == 0 && ft_strnumspace(floor[1]) == 0
+		&& ft_strnumspace(floor[2]) == 0 && ft_strnumspace(ceiling[0]) == 0
+		&& ft_strnumspace(ceiling[1]) == 0 && ft_strnumspace(ceiling[2]) == 0)
+		return (0);
+	return (-1);
+}
 
 static int	color_to_hex(int red, int green, int blue)
 {
@@ -41,6 +64,8 @@ int	check_color(t_game *game)
 		return (-1);
 	floor = ft_split(game->map.f_color, ',');
 	ceiling = ft_split(game->map.c_color, ',');
+	if (color_number(floor, ceiling) != 0)
+		return (-1);
 	if (ft_atoi(floor[0]) < 0 || ft_atoi(floor[0]) > 255
 		|| ft_atoi(floor[1]) < 0 || ft_atoi(floor[1]) > 255
 		|| ft_atoi(floor[2]) < 0 || ft_atoi(floor[2]) > 255

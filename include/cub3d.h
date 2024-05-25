@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 10:27:27 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:54:57 by agusheredia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,8 @@ int		check_map_resolt(t_map *map, t_player *player);
 int		check_path(t_game *game);
 int		check_color(t_game *game);
 void	start_plane(t_game *game);
+int		one_player(t_map *map);
+void	check_map_position(t_map *map);
 
 //game
 int		exit_game(t_game *game);
@@ -198,6 +200,7 @@ size_t	ft_wordcount(char *s, char sep);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 void	draw_square(t_pixel *data, int x, int y, int color);
 void	mesure_player(t_player *player, char view);
+int		ft_isspace(int c);
 
 //utils debug
 void	print_array(char **array);

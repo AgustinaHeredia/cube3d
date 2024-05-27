@@ -6,31 +6,28 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:39:23 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:20:08 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	all_char_valid(t_map *map)
+int	all_char_valid(char **map_game)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	while (map->map_game[row])
+	while (map_game[row])
 	{
 		col = 0;
-		while (map->map_game[row][col] && map->map_game[row][col] != '\n')
+		while (map_game[row][col] && map_game[row][col] != '\n')
 		{
-			if (map->map_game[row][col] != ' '
-				&& map->map_game[row][col] != '\t'
-				&& map->map_game[row][col] != 'N'
-				&& map->map_game[row][col] != 'S'
-				&& map->map_game[row][col] != 'W'
-				&& map->map_game[row][col] != 'E'
-				&& map->map_game[row][col] != '0'
-				&& map->map_game[row][col] != '1')
+			if (map_game[row][col] != ' ' && map_game[row][col] != '\t'
+				&& map_game[row][col] != 'D' && map_game[row][col] != 'd'
+				&& map_game[row][col] != 'N' && map_game[row][col] != 'S'
+				&& map_game[row][col] != 'W' && map_game[row][col] != 'E'
+				&& map_game[row][col] != '0' && map_game[row][col] != '1')
 			{
 				return (-1);
 			}
@@ -89,9 +86,11 @@ int	one_player(t_map *map)
 
 void	check_map(t_game *game)
 {
-	if (all_char_valid(&game->map) != 0)
+	if (all_char_valid(&game->map.map_game) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (one_player(&game->map) != 0)
+		error_free_exit(game, "Error. Number of player invalid\n");
+	if (check_door(&game->map) != 0)
 		error_free_exit(game, "Error. Number of player invalid\n");
 	if (check_map_resolt(&game->map, &game->player) != 0)
 		error_free_exit(game, "Error. The map has no solution.\n");

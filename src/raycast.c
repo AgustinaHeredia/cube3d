@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/24 12:23:48 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:31:06 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	raycast(t_game *game)
 	paint_top_bottom(game);
 	maths_need(game, game->map.map_game);
 	image_put(game);
-	draw_map_2d(game, &game->map);
 	return (0);
 }
 
@@ -78,7 +77,6 @@ int	main_raycast(t_game *game)
 	start_plane(game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
-	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop_hook(game->mlx, &raycast, game);
 	mlx_loop(game->mlx);

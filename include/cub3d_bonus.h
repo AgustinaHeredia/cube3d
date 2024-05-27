@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:38:15 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:19:41 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int		check_arg_and_fd(int argc, char **argv);
 void	init_game(t_game *game);
 void	read_file(int fd, t_game *game);
 void	check_map(t_game *game);
-int		all_char_valid(t_map *map);
+int		all_char_valid(char **map_game);
 int		check_map_resolt(t_map *map, t_player *player);
 int		check_path(t_game *game);
 int		check_color(t_game *game);

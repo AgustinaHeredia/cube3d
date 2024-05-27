@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+         #
+#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/25 20:01:45 by agusheredia      ###   ########.fr        #
+#    Updated: 2024/05/27 11:11:56 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
+NAME_BONUS = cub3D_bonus
 FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
 SRC = src/main.c \
 		src/check_arg.c \
@@ -32,19 +33,42 @@ SRC = src/main.c \
 		src/raycast_utils.c \
 		src/texture_utils.c \
 		src/utils_rotate.c \
-		
+
+SRCS_BONUS = bonus/main_bonus.c \
+				bonus/check_arg_bonus.c \
+				bonus/error_bonus.c \
+				bonus/init_game_bonus.c \
+				bonus/key_press_bonus.c \
+				bonus/exit_bonus.c \
+				bonus/check_map_bonus.c \
+				bonus/check_resolt_bonus.c \
+				bonus/utils_map_bonus.c \
+				bonus/check_path_bonus.c \
+				bonus/check_color_bonus.c \
+				bonus/paint_map2d_bonus.c \
+				bonus/utils_keys_bonus.c \
+				bonus/path_utils_bonus.c \
+				bonus/utils_player_bonus.c \
+				bonus/raycast_bonus.c \
+				bonus/init_raycast_bonus.c \
+				bonus/raycast_utils_bonus.c \
+				bonus/texture_utils_bonus.c \
+				bonus/utils_rotate_bonus.c \
 
 CC = gcc
 MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a
-MLX_FLAGS = -Lmlx -lmlx -framework OPENGL -framework AppKit
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 LIBFT_PATH = libft/
 LIBFT_LIB = $(LIBFT_PATH)libft.a
 HEADER = include/cub3d.h
+HEADER_BONUS = include/cub3d_bonus.h
 
 # Objects
 OBJ_DIR = obj
 OBJECTS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
+OBJS_DIR_BONUS = obj_bonus
+OBJECTS_BONUS = $(addprefix $(OBJS_DIR_BONUS)/,$(notdir $(SRCS_BONUS:.c=.o)))
 
 # Colors
 GREEN = \033[0;32m
@@ -54,9 +78,13 @@ DEFAULT = \033[0m
 
 all: subsystems $(NAME)
 
-# General rule for files in srcs/
+# General rule for files in src/
 $(OBJ_DIR)/%.o: src/%.c $(HEADER) Makefile
 	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(FLAGS) -Imlx -c -o $@ $<
+
+$(OBJS_DIR_BONUS)/%.o: bonus/%.c $(HEADER_BONUS) Makefile
+	@mkdir -p $(OBJS_DIR_BONUS)
 	@$(CC) $(FLAGS) -Imlx -c -o $@ $<
 
 subsystems:
@@ -67,19 +95,28 @@ $(NAME): $(OBJECTS)
 	@$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created!$(DEFAULT)"
 
-clean:
+clean: clean_bonus
 	@make -C $(MLX_PATH) clean
 	@make -C $(LIBFT_PATH) clean
-	@rm -rf $(OBJ_DIR) 
+	@rm -rf $(OBJ_DIR)
 	@echo "$(YELLOW)object files deleted!$(DEFAULT)"
+
+clean_bonus:
+	@make -C $(LIBFT_PATH) clean
+	@rm -rf $(OBJS_DIR_BONUS)
+	@echo -e "$(YELLOW)bonus object files deleted!$(DEFAULT)"
 
 fclean: clean
 	@make -C $(MLX_PATH) fclean
 	@make -C $(LIBFT_PATH) fclean
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@echo "$(RED)all deleted!$(DEFAULT)"
-	
 
 re: fclean all
 
-.PHONY: all re clean fclean subsystems
+bonus: $(HEADER_BONUS) $(OBJECTS_BONUS) subsystems
+	@$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJECTS_BONUS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME_BONUS)
+	@echo -e "$(GREEN)$(NAME_BONUS) (bonus) created!$(DEFAULT)"
+
+.PHONY: all re clean fclean subsystems bonus

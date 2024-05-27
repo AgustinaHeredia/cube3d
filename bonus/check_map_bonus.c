@@ -6,11 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 11:20:08 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:39:01 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 int	all_char_valid(char **map_game)
 {
@@ -86,12 +86,12 @@ int	one_player(t_map *map)
 
 void	check_map(t_game *game)
 {
-	if (all_char_valid(&game->map.map_game) != 0)
+	if (all_char_valid(game->map.map_game) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (one_player(&game->map) != 0)
 		error_free_exit(game, "Error. Number of player invalid\n");
-	if (check_door(&game->map) != 0)
-		error_free_exit(game, "Error. Number of player invalid\n");
+	if (check_door(game->map.map_game) != 0)
+		error_free_exit(game, "Error. Door invalid\n");
 	if (check_map_resolt(&game->map, &game->player) != 0)
 		error_free_exit(game, "Error. The map has no solution.\n");
 	if (check_path(game) != 0)

@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/27 11:11:56 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/27 14:39:35 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS_BONUS = bonus/main_bonus.c \
 				bonus/raycast_utils_bonus.c \
 				bonus/texture_utils_bonus.c \
 				bonus/utils_rotate_bonus.c \
+				bonus/check_door_bonus.c \
 
 CC = gcc
 MLX_PATH = mlx/

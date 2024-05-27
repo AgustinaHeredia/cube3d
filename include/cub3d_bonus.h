@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 11:19:41 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:48:02 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,14 @@ typedef struct s_maths
 	double	tex_pos;
 }	t_maths;
 
+typedef struct s_door
+{
+	int		x;
+	int		y;
+	int		open;
+}	t_door;
+
+
 typedef struct s_game
 {
 	t_map		map;
@@ -160,6 +168,7 @@ typedef struct s_game
 	void		*path_s;
 	void		*path_w;
 	void		*path_e;
+	void		*door;
 	int			**texture;
 	int			buf[S_HEIGHT][S_WIDTH];
 }	t_game;
@@ -237,5 +246,8 @@ int		mouse_move(int x, int y, t_game *game);
 
 //path
 int		path_img(t_game *game, t_map *map);
+
+//Bonus
+int		check_door(char **map_game);
 
 #endif

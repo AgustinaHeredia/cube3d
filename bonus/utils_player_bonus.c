@@ -6,11 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:03:28 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:41:15 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:16:08 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	mesure_player(t_player *player, char view)
 {

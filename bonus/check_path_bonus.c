@@ -6,11 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:55:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:39:46 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:15:33 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static int	path_count(t_game *game)
 {

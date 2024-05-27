@@ -6,11 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:38:58 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:15:25 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static int	ft_strnumspace(char *str)
 {

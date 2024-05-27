@@ -6,11 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:40:11 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:49:26 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static void	initialize_player(t_game *game)
 {
@@ -101,4 +101,5 @@ void	init_game(t_game *game)
 	game->path_s = NULL;
 	game->path_w = NULL;
 	game->path_e = NULL;
+	game->door = NULL;
 }

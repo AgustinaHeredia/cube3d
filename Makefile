@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/27 11:11:56 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/27 16:01:59 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,7 @@ clean: clean_bonus
 clean_bonus:
 	@make -C $(LIBFT_PATH) clean
 	@rm -rf $(OBJS_DIR_BONUS)
+	@rm -f .bonus_built
 	@echo -e "$(YELLOW)bonus object files deleted!$(DEFAULT)"
 
 fclean: clean
@@ -111,12 +112,16 @@ fclean: clean
 	@make -C $(LIBFT_PATH) fclean
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
+	@rm -f .bonus_built
 	@echo "$(RED)all deleted!$(DEFAULT)"
 
 re: fclean all
 
-bonus: $(HEADER_BONUS) $(OBJECTS_BONUS) subsystems
+bonus: $(HEADER_BONUS) $(OBJECTS_BONUS) subsystems .bonus_built
+
+.bonus_built: $(OBJECTS_BONUS)
 	@$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJECTS_BONUS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME_BONUS)
+	@touch .bonus_built
 	@echo -e "$(GREEN)$(NAME_BONUS) (bonus) created!$(DEFAULT)"
 
-.PHONY: all re clean fclean subsystems bonus
+.PHONY: all re clean fclean subsystems bonus clean_bonus

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_raycast_bonuns.c                              :+:      :+:    :+:   */
+/*   init_raycast_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/24 13:20:57 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:02:00 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ int	init_texture(t_game *game)
 	game->texture = (int **)malloc(sizeof(int *) * (TEX_W * TEX_H));
 	if (!(game->texture))
 		return (-1);
-	while (i++ < 8)
+	while (i++ < 10)
 	{
 		game->texture[i] = (int *)malloc(sizeof(int) * (TEX_W * TEX_H));
 		if (!(game->texture[i]))
 			return (-1);
 	}
 	i = 0;
-	while (i < 8)
+	while (i < 10)
 	{
 		while (j < TEX_W * TEX_H)
 		{

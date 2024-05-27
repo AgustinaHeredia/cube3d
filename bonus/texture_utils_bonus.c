@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/24 13:21:11 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:03:23 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	load_texture(t_game *game)
 	load_image(game, game->texture[1], game->map.path_so, &img);
 	load_image(game, game->texture[2], game->map.path_we, &img);
 	load_image(game, game->texture[3], game->map.path_ea, &img);
+	load_image(game, game->texture[4], "./textures/yellow.xpm", &img);
 }
 
 void	image_put(t_game *game)
@@ -85,6 +86,7 @@ void	paint_top_bottom(t_game *game)
 
 int	get_texture(t_maths *maths)
 {
+	
 	if (maths->side_texture[X] == 0)
 	{
 		if (maths->side_texture[Y] == 1)

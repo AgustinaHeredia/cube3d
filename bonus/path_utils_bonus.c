@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:50:27 by agusheredia       #+#    #+#             */
-/*   Updated: 2024/05/24 13:21:03 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:00:56 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	path_img(t_game *game, t_map *map)
 		return (-1);
 	game->path_e = mlx_xpm_file_to_image(game->mlx, map->path_ea, &w, &h);
 	if (!game->path_e)
+		return (-1);
+	game->door = mlx_xpm_file_to_image(game->mlx, "./textures/yellow.xpm", &w, &h);
+	if (!game->door)
 		return (-1);
 	return (0);
 }

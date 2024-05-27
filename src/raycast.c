@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/27 11:31:06 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:52:24 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,33 @@ void	calculating_line_height(t_maths *maths, t_ray *ray)
 	maths->wall_x -= floor(maths->wall_x);
 }
 
-void	prepare_draw_game(t_game *game, t_maths *maths, t_ray *ray, int x)
+void prepare_draw_game(t_game *game, t_maths *maths, t_ray *ray, int x)
 {
-	int	y;
-	int	texture;
-	int	px;
+    int y;
+    int texture;
+    int px;
 
-	calculating_line_height(maths, ray);
-	maths->tex_x = (int)(maths->wall_x * (double)TEX_W);
-	maths->step = 1.0 * TEX_H / maths->line_height;
-	maths->tex_pos = (maths->draw_start - S_HEIGHT / 2 \
-	+ maths->line_height / 2) * maths->step;
-	y = maths->draw_start;
-	while (y < maths->draw_end)
-	{
-		maths->tex_y = (int)maths->tex_pos & (TEX_H - 1);
-		maths->tex_pos += maths->step;
-		maths->tex_num = get_texture(&game->maths);
-		px = TEX_H * maths->tex_y + maths->tex_x;
-		texture = game->texture[maths->tex_num][px];
-		game->buf[y][x] = texture;
-		y++;
-	}
+    calculating_line_height(maths, ray);
+    maths->tex_x = (int)(maths->wall_x * (double)MAX_TEXTURE_WIDTH); // CAMBIO
+    if (maths->side == 0 && ray->dir_vector_x > 0)
+        maths->tex_x = MAX_TEXTURE_WIDTH - maths->tex_x - 1; // CAMBIO
+    if (maths->side == 1 && ray->dir_vector_y < 0)
+        maths->tex_x = MAX_TEXTURE_WIDTH - maths->tex_x - 1; // CAMBIO
+    maths->step = 1.0 * MAX_TEXTURE_HEIGHT / maths->line_height; // CAMBIO
+    maths->tex_pos = (maths->draw_start - S_HEIGHT / 2 + maths->line_height / 2) * maths->step; // CAMBIO
+    y = maths->draw_start;
+    while (y < maths->draw_end)
+    {
+        maths->tex_y = (int)maths->tex_pos & (MAX_TEXTURE_HEIGHT - 1); // CAMBIO
+        maths->tex_pos += maths->step;
+        maths->tex_num = get_texture(&game->maths);
+        px = MAX_TEXTURE_HEIGHT * maths->tex_y + maths->tex_x; // CAMBIO
+        texture = game->texture[maths->tex_num][px];
+        game->buf[y][x] = texture;
+        y++;
+    }
 }
+
 
 int	raycast(t_game *game)
 {

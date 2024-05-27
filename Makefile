@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/27 11:11:56 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/27 14:42:33 by pquintan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,9 @@ SRC = src/main.c \
 		src/raycast.c \
 		src/init_raycast.c \
 		src/raycast_utils.c \
-		src/texture_utils.c \
 		src/utils_rotate.c \
+		src/texture_utils_test.c \
+		#src/texture_utils.c \
 
 SRCS_BONUS = bonus/main_bonus.c \
 				bonus/check_arg_bonus.c \

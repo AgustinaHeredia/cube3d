@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/25 19:54:57 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/27 14:39:11 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define PLAYER_SPEED 2 // 4 esta bien tambien
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
+# define MAX_TEXTURE_WIDTH 1300
+# define MAX_TEXTURE_HEIGHT 1300
 # define X_EVENT_KEY_EXIT		17
 # define MOUSE_SENSITIVITY 0.005
 

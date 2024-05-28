@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:17:48 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 13:21:00 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:55:25 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@ int	main(int argc, char **argv)
 	fd = check_arg_and_fd(argc, argv);
 	if (fd == 1)
 		return (1);
+	game.exit = 0;
 	init_game(&game);
 	read_file(fd, &game);
 	check_map(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
-		return (ft_error("Error. The release could not be started MLX\n"));
+	{
+		ft_error("Error. The release could not be started MLX\n");
+		game.exit = 1;
+		exit_game(&game);
+	}
+	if (path_img(&game, &game.map) == -1)
+	{
+		ft_error("Error. Path is not valid\n");
+		game.exit = 1;
+		exit_game(&game);
+	}
 	main_raycast(&game);
 	return (0);
 }

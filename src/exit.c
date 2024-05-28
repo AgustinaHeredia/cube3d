@@ -6,7 +6,7 @@
 /*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 12:37:54 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:57:51 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	exit_game(t_game *game)
 	free_map(game->map.file);
 	free(game->maths.side_texture);
 	free_texture(game->texture);
+	if (game->exit == 1)
+		exit(1);
 	exit(0);
 	ft_printf("Ooohhh... you're out of the game\n");
 }

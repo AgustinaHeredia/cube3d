@@ -1,9 +1,8 @@
-R 500 500
-NO 
-SO tests/textures/bricks.xpm
-WE tests/textures/gold.xpm
-EA tests/textures/wood.xpm
-S tests/textures/enemy.xpm
+NO ./textures/blue.xpm
+WE ./textures/green.xpm
+SO ./textures/red.xpm
+EA ./textures/yellow.xpm
+
 F 220,111,119
 C 225,111,200
 

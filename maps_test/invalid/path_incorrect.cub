@@ -1,9 +1,9 @@
 NO ./textures/blue.xpm
 WE ./textures/green.xpm
 SO ./textures/red.xpm
-EA ./textures/yellow.xpm
+EA ./test/yellow.xpm
 
-F 654,178,128
+F 222,178,128
 C 42,173,230
 
  11111111111111111111111111111111111111

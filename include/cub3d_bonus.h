@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 11:19:41 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:55:07 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ typedef struct s_game
 	void		*path_w;
 	void		*path_e;
 	int			**texture;
+	int			exit;
 	int			buf[S_HEIGHT][S_WIDTH];
 }	t_game;
 

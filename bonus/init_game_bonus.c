@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:40:11 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:55:33 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

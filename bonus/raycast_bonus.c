@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:17:59 by pquintan          #+#    #+#             */
-/*   Updated: 2024/05/24 13:21:07 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:42:17 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	main_raycast(t_game *game)
 	game->img.img = mlx_new_image(game->mlx, S_WIDTH, S_HEIGHT);
 	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, \
 	&game->img.size_l, &game->img.endian);
-	if (path_img(game, &game->map) == -1)
-		return (ft_error("Error. Path is not valid\n"));
 	if (init_texture(game) == -1)
 		return (-1);
 	load_texture(game);

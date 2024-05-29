@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/29 11:49:32 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:07:03 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int	check_map_resolt(t_map *map, t_player *player)
 	player_position(map, player);
 	temp = create_copy_map(map->map_game, map->height);
 	flood_fill(map, temp, player->init_x, player->init_y);
-	print_array(temp);
 	i = 0;
 	while (temp[i])
 	{

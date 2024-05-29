@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:31:03 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 13:21:13 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:57:43 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	hook_player(t_game *game)
 	{
 		handle_player_rotation(game);
 	}
-	else if (game->player.up_down == 1)
+	if (game->player.up_down == 1)
 	{
 		move_forward(game);
 	}
@@ -122,7 +122,7 @@ void	hook_player(t_game *game)
 	{
 		move_backward(game);
 	}
-	else if (game->player.left_right == 1)
+	if (game->player.left_right == 1)
 	{
 		move_right(game);
 	}

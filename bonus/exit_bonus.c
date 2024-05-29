@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:34:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/28 14:50:48 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:14:50 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	exit_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->exit == 0)
+		mlx_destroy_window(game->mlx, game->win);
 	free_map(game->map.map_game);
 	free_map(game->map.file);
 	free(game->maths.side_texture);

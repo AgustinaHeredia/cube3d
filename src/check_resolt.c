@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_resolt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/24 12:47:54 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:32:48 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ static void	flood_fill(t_map *map, char **temp, int x, int y)
 	flood_fill(map, temp, x, (y - 1));
 }
 
-static char	**create_copy_map(char **map, int height)
+static char	**create_copy_map(t_map *map)
 {
 	char	**temp;
 	int		i;
 
-	temp = (char **)malloc((height + 1) * sizeof(char *));
+	temp = (char **)malloc((map->height + 3) * sizeof(char *));
 	if (!temp)
 		ft_error("Error. Couldn't assign memory to the map\n");
-	i = 0;
-	while (i < height)
+	temp[0] = ft_spalloc(map->width);
+	i = 1;
+	while (i < map->height)
 	{
-		temp[i] = ft_strdup(map[i]);
+		temp[i] = ft_strdup(map->map_game[i]);
 		if (!temp[i])
 		{
 			free_map(temp);
@@ -46,7 +47,8 @@ static char	**create_copy_map(char **map, int height)
 		}
 		i++;
 	}
-	temp[height] = NULL;
+	temp[i] = ft_spalloc(map->width);
+	temp[++i] = NULL;
 	return (temp);
 }
 
@@ -113,7 +115,7 @@ int	check_map_resolt(t_map *map, t_player *player)
 	int		i;
 
 	player_position(map, player);
-	temp = create_copy_map(map->map_game, map->height);
+	temp = create_copy_map(map);
 	flood_fill(map, temp, player->init_x, player->init_y);
 	i = 0;
 	while (temp[i])

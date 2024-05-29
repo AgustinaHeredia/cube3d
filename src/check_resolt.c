@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/29 10:32:48 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:40:06 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	check_map_resolt(t_map *map, t_player *player)
 	{
 		if (check_flood(temp, temp[i], i) == -1)
 		{
-			free(temp);
+			free_map(temp);
 			return (-1);
 		}
 		i++;

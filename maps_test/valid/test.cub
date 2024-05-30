@@ -1,0 +1,15 @@
+NO ./textures/blue.xpm
+WE ./textures/green.xpm
+SO ./textures/red.xpm
+EA ./textures/yellow.xpm
+
+F 116,212,52
+C 135,206,235
+
+0000000000000
+01111111111100
+01010000010100
+1000S001001
+01010000010100
+01111111111100
+00000000000000

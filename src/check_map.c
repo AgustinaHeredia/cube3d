@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:39:43 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/29 14:49:51 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:21:54 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,40 @@ int	one_player(t_map *map)
 	return (0);
 }
 
+static int	check_wall(t_map *map)
+{
+	int	row;
+	int	col;
+	int	count;
+
+	row = 0;
+	count = 0;
+	while (map->map_game[row])
+	{
+		col = 0;
+		while (map->map_game[row][col] && map->map_game[row][col] != '\n')
+		{
+			if (map->map_game[row][col] == '1')
+			{
+				count++;
+			}
+			col++;
+		}
+		row++;
+	}
+	if (count < 4)
+		return (-1);
+	return (0);
+}
+
 void	check_map(t_game *game)
 {
 	if (all_char_valid(game->map.map_game) != 0)
 		error_free_exit(game, "Error. Map has invalid char\n");
 	if (one_player(&game->map) != 0)
 		error_free_exit(game, "Error. Number of player invalid\n");
+	if (check_wall(&game->map) != 0)
+		error_free_exit(game, "Error. The map has no solution.\n");
 	if (check_map_resolt(&game->map, &game->player) != 0)
 		error_free_exit(game, "Error. The map has no solution.\n");
 	if (check_path(game) != 0)

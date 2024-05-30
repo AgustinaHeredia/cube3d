@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:19:57 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/28 14:55:07 by pquintan         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:32:03 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ void	error_free_exit(t_game *game, char *str);
 int		exit_game(t_game *game);
 int		free_map(char **tab);
 void	free_texture(int **texture);
+int		ft_exit_map(char **map1, char **map2);
 
 //utils
 char	*ft_spalloc(size_t count);

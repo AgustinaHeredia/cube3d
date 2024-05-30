@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:58:14 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/25 19:51:16 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/30 16:30:59 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ int	check_color(t_game *game)
 	floor = ft_split(game->map.f_color, ',');
 	ceiling = ft_split(game->map.c_color, ',');
 	if (color_number(floor, ceiling) != 0)
-		return (-1);
+		return (ft_exit_map(floor, ceiling));
 	if (ft_atoi(floor[0]) < 0 || ft_atoi(floor[0]) > 255
 		|| ft_atoi(floor[1]) < 0 || ft_atoi(floor[1]) > 255
 		|| ft_atoi(floor[2]) < 0 || ft_atoi(floor[2]) > 255
 		|| ft_atoi(ceiling[0]) < 0 || ft_atoi(ceiling[0]) > 255
 		|| ft_atoi(ceiling[1]) < 0 || ft_atoi(ceiling[1]) > 255
 		|| ft_atoi(ceiling[2]) < 0 || ft_atoi(ceiling[2]) > 255)
-		return (-1);
+		return (ft_exit_map(floor, ceiling));
 	mesure_color(&game->map, floor, ceiling);
 	free_map(floor);
 	free_map(ceiling);

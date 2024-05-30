@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
+#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/30 10:24:45 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/30 15:41:29 by pquintan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 NAME_BONUS = cub3D_bonus
-FLAGS = -Wall -Werror -Wextra -g -fsanitize='address,undefined'
+FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
 SRC = src/main.c \
 		src/check_arg.c \
 		src/error.c \

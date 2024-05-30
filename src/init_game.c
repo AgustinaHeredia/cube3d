@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agusheredia <agusheredia@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:53 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/25 19:26:26 by agusheredia      ###   ########.fr       */
+/*   Updated: 2024/05/30 15:41:59 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	init_map(t_game *game)
 static void	space_map(t_map *map)
 {
 	int		i;
-	char	*temp;
 	char	*temp2;
+	char	*temp;
 	int		len;
 
 	map_mesures(map);
@@ -55,8 +55,8 @@ static void	space_map(t_map *map)
 			temp2 = ft_strdup(map->map_game[i]);
 			free(map->map_game[i]);
 			map->map_game[i] = ft_strjoin(temp2, temp);
-			free(temp);
 			free(temp2);
+			free(temp);
 		}
 		i++;
 	}

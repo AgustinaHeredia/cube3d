@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/30 11:09:25 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/30 13:26:51 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ static int	check_flood(char **map, char *line, int row)
 		{
 			if (row == 0 || !map[row + 1])
 				return (-1);
-			if (map[row - 1][x] == ' ')
+			if (map[row - 1][x] == ' ' || map[row + 1][x] == ' ')
 				return (-1);
-			if (map[row + 1][x] == ' ')
+			if (map[row][x - 1] == ' ' || map[row][x + 1] == ' ')
 				return (-1);
 		}
 		x++;

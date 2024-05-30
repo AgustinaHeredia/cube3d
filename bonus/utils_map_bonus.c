@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:10 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/27 10:40:47 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:43:56 by pquintan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 char	*ft_spalloc(size_t count)
 {
-	void	*ptr;
+	char	*ptr;
 	size_t	i;
 
-	ptr = (char *) malloc(sizeof(char) * count);
+	ptr = (char *) malloc(sizeof(char) * (count + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;
 	while (i < count)
 	{
-		((unsigned char *)ptr)[i] = ' ';
+		ptr[i] = ' ';
 		i++;
 	}
+	ptr[count] = '\0';
 	return (ptr);
 }
 

@@ -6,13 +6,13 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/27 16:01:59 by agheredi         ###   ########.fr        #
+#    Updated: 2024/05/30 10:24:45 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 NAME_BONUS = cub3D_bonus
-FLAGS = -Wall -Werror -Wextra -g #-fsanitize='address,undefined'
+FLAGS = -Wall -Werror -Wextra -g -fsanitize='address,undefined'
 SRC = src/main.c \
 		src/check_arg.c \
 		src/error.c \

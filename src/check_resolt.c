@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/29 14:54:04 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:03:25 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static void	flood_fill(t_map *map, char **temp, int x, int y)
 {
 	int	len;
 
-	printf("hola\n");
+	if (!map->map_game[x])
+		return ;
 	len = ft_strlen(map->map_game[x]);
-	if (x <= 0 || x >= map->height || y <= 0 || y >= len
-		|| temp[x][y] == '1' || temp[x][y] == 'F' || temp[x][y] == ' ')
+	if (x == map->width)
+		return ;
+	if (x <= 0 || x > map->height || y <= 0 || y > map->width || \
+	temp[x][y] == '1' || temp[x][y] == 'F' || temp[x][y] == ' ')
 		return ;
 	temp[x][y] = 'F';
 	flood_fill(map, temp, (x + 1), y);
@@ -45,6 +48,7 @@ static char	**create_copy_map(char **map, int height)
 			free_map(temp);
 			ft_error("Error. Couldn't assign memory to the map\n");
 		}
+		// printf("%s\n", temp[i]);
 		i++;
 	}
 	temp[height] = NULL;

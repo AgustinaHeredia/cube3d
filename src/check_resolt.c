@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:13 by agheredi          #+#    #+#             */
-/*   Updated: 2024/05/30 11:03:25 by agheredi         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:09:25 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static char	**create_copy_map(char **map, int height)
 			free_map(temp);
 			ft_error("Error. Couldn't assign memory to the map\n");
 		}
-		// printf("%s\n", temp[i]);
 		i++;
 	}
 	temp[height] = NULL;

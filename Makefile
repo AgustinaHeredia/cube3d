@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pquintan <pquintan@student.42barcelona.    +#+  +:+       +#+         #
+#    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2024/05/30 15:41:29 by pquintan         ###   ########.fr        #
+#    Updated: 2024/06/02 11:57:25 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,28 +88,28 @@ $(OBJS_DIR_BONUS)/%.o: bonus/%.c $(HEADER_BONUS) Makefile
 	@$(CC) $(FLAGS) -Imlx -c -o $@ $<
 
 subsystems:
-	@make -C $(MLX_PATH) all
-	@make -C $(LIBFT_PATH) all
+	@make -C $(MLX_PATH) all --no-print-directory
+	@make -C $(LIBFT_PATH) all --no-print-directory
 
 $(NAME): $(OBJECTS)
 	@$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 clean: clean_bonus
-	@make -C $(MLX_PATH) clean
-	@make -C $(LIBFT_PATH) clean
+	@make -C $(MLX_PATH) clean --no-print-directory
+	@make -C $(LIBFT_PATH) clean --no-print-directory
 	@rm -rf $(OBJ_DIR)
 	@echo "$(YELLOW)object files deleted!$(DEFAULT)"
 
 clean_bonus:
-	@make -C $(LIBFT_PATH) clean
+	@make -C $(LIBFT_PATH) clean --no-print-directory
 	@rm -rf $(OBJS_DIR_BONUS)
 	@rm -f .bonus_built
 	@echo -e "$(YELLOW)bonus object files deleted!$(DEFAULT)"
 
 fclean: clean
-	@make -C $(MLX_PATH) fclean
-	@make -C $(LIBFT_PATH) fclean
+	@make -C $(MLX_PATH) fclean --no-print-directory
+	@make -C $(LIBFT_PATH) fclean --no-print-directory
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
 	@rm -f .bonus_built
@@ -125,3 +125,4 @@ bonus: $(HEADER_BONUS) $(OBJECTS_BONUS) subsystems .bonus_built
 	@echo -e "$(GREEN)$(NAME_BONUS) (bonus) created!$(DEFAULT)"
 
 .PHONY: all re clean fclean subsystems bonus clean_bonus
+.SILENT:

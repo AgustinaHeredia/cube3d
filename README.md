@@ -1,6 +1,10 @@
 # cube3d
 cub3d es un juego de tipo raycasting en 3D inspirado en Wolfenstein 3D. Este proyecto está desarrollado en C utilizando la biblioteca gráfica MiniLibX. El objetivo es explorar un laberinto y sobrevivir a los enemigos.
 
+
+https://github.com/AgustinaHeredia/cube3d/assets/119814051/603556b7-6bdd-47f4-95d0-b486afe930c3
+
+
 ## Características
 Raycasting: Generación de gráficos 3D a partir de un mapa 2D.
 MiniMapa: Visualización en tiempo real del mapa 2D.
